@@ -1,0 +1,21 @@
+{
+  "name": "LeadBoostX - Next-Gen UX Design & Development",
+  "short_name": "LeadBoostX",
+  "description": "Crafting next-generation user experiences through innovative design and cutting-edge technology",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/Screenshot_2025-08-13_023958-removebg-preview.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "en",
+  "dir": "ltr"
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadBoostX Favicon Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        .container {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .favicon-preview {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .favicon-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .status.success {
+            background: #065f46;
+            border: 1px solid #34d399;
+        }
+        .status.warning {
+            background: #92400e;
+            border: 1px solid #fbbf24;
+        }
+        .status.error {
+            background: #991b1b;
+            border: 1px solid #f87171;
+        }
+        .code {
+            background: #374151;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 LeadBoostX Favicon Test Page</h1>
+        <p>This page tests if your logo is working as a favicon.</p>
+        
+        <div class="status success">
+            <h3>✅ Current Status</h3>
+            <p>Your logo is now being used as a temporary favicon. Check your browser tab - you should see your LeadBoostX logo!</p>
+        </div>
+        
+        <div class="favicon-preview">
+            <h3>🖼️ Your Logo (Current Favicon)</h3>
+            <img src="/Screenshot_2025-08-13_023958-removebg-preview.png" alt="LeadBoostX Logo" style="max-width: 300px;">
+            <p style="color: #333; margin-top: 15px;">This image is now your favicon - Size increased for better visibility!</p>
+        </div>
+        
+        <div class="status warning">
+            <h3>⚠️ Temporary Solution</h3>
+            <p>This is a temporary fix. For the best experience, you should still generate proper favicon files.</p>
+        </div>
+        
+        <div class="container">
+            <h3>🔧 How to Generate Proper Favicon Files:</h3>
+            <ol>
+                <li><strong>Go to:</strong> <a href="https://favicon.io/" target="_blank" style="color: #60a5fa;">favicon.io</a></li>
+                <li><strong>Upload:</strong> Your logo image</li>
+                <li><strong>Download:</strong> The favicon package</li>
+                <li><strong>Extract:</strong> All files to your <code>public/</code> folder</li>
+            </ol>
+        </div>
+        
+        <div class="container">
+            <h3>📁 Required Files After Generation:</h3>
+            <div class="code">
+favicon.ico (multi-size: 16x16, 32x32, 48x48)
+favicon-16x16.png
+favicon-32x32.png
+apple-touch-icon.png (180x180)
+            </div>
+        </div>
+        
+        <div class="status success">
+            <h3>🎯 What's Working Now:</h3>
+            <ul>
+                <li>✅ Logo displays in browser tab</li>
+                <li>✅ Logo works as mobile app icon</li>
+                <li>✅ No more 404 errors</li>
+                <li>✅ PWA manifest working</li>
+            </ul>
+        </div>
+        
+        <div class="container">
+            <h3>💡 Pro Tips:</h3>
+            <ul>
+                <li><strong>Browser Cache:</strong> You may need to hard refresh (Ctrl+F5) to see the favicon</li>
+                <li><strong>Mobile Testing:</strong> Save to home screen to test mobile app icon</li>
+                <li><strong>Different Browsers:</strong> Test in Chrome, Firefox, Safari for compatibility</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
