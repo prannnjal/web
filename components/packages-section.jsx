@@ -71,12 +71,12 @@ export default function PackagesSection() {
         </div>
 
         {/* Packages Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-16">
           {packages.map((pkg, index) => (
             <div
               key={index}
               className={`relative group fade-in-up ${
-                pkg.popular ? "scale-105" : ""
+                pkg.popular ? "sm:scale-105" : ""
               }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >

@@ -47,21 +47,21 @@ export default function ServicesSection() {
     <section id="services" className="section-padding bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 fade-in-up">
-          <h2 className="section-title text-4xl lg:text-5xl text-white mb-4">
+        <div className="text-center mb-16 fade-in-up px-4">
+          <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-white mb-4">
             What I <span className="gradient-text">Create</span>
           </h2>
-          <p className="text-xl text-white/60 max-w-3xl mx-auto font-generalsans">
+          <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-generalsans">
             Comprehensive digital solutions that transform ideas into powerful, user-centric experiences.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <div 
               key={index}
-              className="glass-card p-8 hover:bg-white/5 transition-all duration-300 group fade-in-up"
+              className="glass-card p-6 sm:p-8 hover:bg-white/5 transition-all duration-300 group fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="text-red-500 mb-6 group-hover:scale-110 transition-transform duration-300">

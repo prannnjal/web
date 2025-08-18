@@ -63,11 +63,11 @@ export default function ResultsSection() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-20">
           {stats.map((stat, index) => (
             <div 
               key={index}
-              className="glass-card p-8 text-center group hover:bg-white/5 transition-all duration-300 fade-in-up"
+              className="glass-card p-6 sm:p-8 text-center group hover:bg-white/5 transition-all duration-300 fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="text-red-500 mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -96,11 +96,11 @@ export default function ResultsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="glass-card p-8 hover:bg-white/5 transition-all duration-300 fade-in-up"
+              className="glass-card p-6 sm:p-8 hover:bg-white/5 transition-all duration-300 fade-in-up"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className="flex mb-4">

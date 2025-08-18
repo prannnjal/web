@@ -448,7 +448,7 @@ export default function Chatbot() {
   return (
     <>
       {/* Next-Gen Chat Icon - Fixed Position */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-blue-500/25 group"
@@ -475,12 +475,12 @@ export default function Chatbot() {
 
       {/* Next-Gen Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-96 h-[500px] bg-black/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-800/50 z-50 flex flex-col overflow-hidden">
+        <div className="fixed bottom-24 left-4 right-4 sm:left-auto sm:right-6 w-auto sm:w-96 h-[65vh] sm:h-[500px] max-h-[85vh] bg-black/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-800/50 z-50 flex flex-col overflow-hidden">
           {/* Gradient border effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-cyan-600/20 rounded-2xl pointer-events-none"></div>
           
           {/* Chat Header */}
-          <div className="relative bg-gradient-to-r from-gray-900 to-gray-800 p-4 rounded-t-2xl border-b border-gray-700/50">
+          <div className="relative bg-gradient-to-r from-gray-900 to-gray-800 p-3 sm:p-4 rounded-t-2xl border-b border-gray-700/50">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="relative">
@@ -502,14 +502,14 @@ export default function Chatbot() {
           </div>
 
           {/* Messages Container */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-gray-900/50 to-black/50">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-4 bg-gradient-to-b from-gray-900/50 to-black/50">
             {messages.map((message) => (
               <div
                 key={message.id}
                 className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-[80%] p-4 rounded-2xl ${
+                  className={`max-w-[85%] sm:max-w-[80%] p-3 sm:p-4 rounded-2xl ${
                     message.sender === 'user'
                       ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-br-md shadow-lg'
                       : 'bg-gray-800/80 text-gray-100 rounded-bl-md border border-gray-700/50 backdrop-blur-sm'
@@ -523,7 +523,7 @@ export default function Chatbot() {
                       </div>
                     )}
                     <div className="flex-1">
-                      <p className="text-sm leading-relaxed">{message.text}</p>
+                      <p className="text-sm leading-relaxed break-words whitespace-pre-wrap">{message.text}</p>
                       <p className="text-xs opacity-60 mt-2">
                         {message.timestamp.toLocaleTimeString([], { 
                           hour: '2-digit', 
@@ -542,7 +542,7 @@ export default function Chatbot() {
             {/* ChatGPT-style Typing Indicator */}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-gray-800/80 text-gray-100 rounded-2xl rounded-bl-md border border-gray-700/50 p-4 backdrop-blur-sm">
+                <div className="bg-gray-800/80 text-gray-100 rounded-2xl rounded-bl-md border border-gray-700/50 p-3 sm:p-4 backdrop-blur-sm">
                   <div className="flex items-center space-x-3">
                     <div className="relative">
                       <Bot className="h-4 w-4 text-cyan-400" />
@@ -563,8 +563,8 @@ export default function Chatbot() {
           </div>
 
           {/* Next-Gen Input Area */}
-          <div className="p-4 bg-gradient-to-r from-gray-900 to-gray-800 border-t border-gray-700/50 rounded-b-2xl">
-            <div className="flex space-x-3">
+          <div className="p-3 sm:p-4 pb-[env(safe-area-inset-bottom)] bg-gradient-to-r from-gray-900 to-gray-800 border-t border-gray-700/50 rounded-b-2xl">
+            <div className="flex gap-2 sm:gap-3">
               <div className="flex-1 relative">
                 <input
                   ref={inputRef}
@@ -573,7 +573,7 @@ export default function Chatbot() {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me anything..."
-                  className="w-full px-4 py-3 bg-gray-800/80 border border-gray-700/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 backdrop-blur-sm transition-all"
+                  className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base bg-gray-800/80 border border-gray-700/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 backdrop-blur-sm transition-all"
                   disabled={isTyping}
                 />
                 {/* Input glow effect */}
@@ -582,7 +582,7 @@ export default function Chatbot() {
               <button
                 onClick={handleSendMessage}
                 disabled={!inputValue.trim() || isTyping}
-                className="bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 disabled:from-gray-600 disabled:to-gray-600 text-white p-3 rounded-xl transition-all duration-300 hover:scale-105 disabled:scale-100 shadow-lg hover:shadow-cyan-500/25"
+                className="bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 disabled:from-gray-600 disabled:to-gray-600 text-white px-3 py-2 sm:p-3 rounded-xl transition-all duration-300 hover:scale-105 disabled:scale-100 shadow-lg hover:shadow-cyan-500/25"
               >
                 <Send className="h-5 w-5" />
               </button>

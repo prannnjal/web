@@ -14,7 +14,7 @@ const ThreeDModel = dynamic(() => import("./3d-model"), {
 // Fallback component for when 3D model fails to load
 function ThreeDModelFallback() {
   return (
-    <div className="relative h-[600px] w-full bg-black flex items-center justify-center">
+    <div className="relative h-[50vh] sm:h-[60vh] w-full bg-black flex items-center justify-center">
       <div className="text-center text-white">
         <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-red-500 mx-auto mb-4"></div>
         <h3 className="text-xl font-bold mb-2">Loading 3D Computer</h3>
@@ -27,7 +27,7 @@ function ThreeDModelFallback() {
 // Error fallback component
 function ThreeDModelError() {
   return (
-    <div className="relative h-[600px] w-full bg-black flex items-center justify-center">
+    <div className="relative h-[50vh] sm:h-[60vh] w-full bg-black flex items-center justify-center">
       <div className="text-center text-white">
         <div className="text-6xl mb-4">🖥️</div>
         <h3 className="text-xl font-bold mb-2">3D Computer Setup</h3>
@@ -61,11 +61,11 @@ export default function HeroSection() {
   return (
     <section className="min-h-screen w-full flex flex-col relative bg-black" id="home">
       {/* Text Content - Top Section */}
-      <div className="w-full mx-auto flex flex-col mt-36 lg:mt-20 text-center gap-3 z-10">
+      <div className="w-full mx-auto flex flex-col mt-28 sm:mt-32 md:mt-36 lg:mt-20 text-center gap-3 z-10 px-4">
         <p className="sm:text-3xl text-xl font-medium text-white font-generalsans">
           Welcome to LeadBoostX
         </p>
-        <p className="hero_tag text-white font-thin text-6xl lg:text-7xl">
+        <p className="hero_tag text-white font-thin text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
           We craft next-gen UX.
         </p>
       </div>
@@ -85,10 +85,10 @@ export default function HeroSection() {
       </div>
 
       {/* Call to Action Button - Bottom */}
-      <div className="absolute bottom-5 left-0 right-0 w-full z-10 text-center">
+      <div className="absolute bottom-5 left-0 right-0 w-full z-10 text-center pb-[env(safe-area-inset-bottom)]">
         <Button 
           size="lg" 
-          className="bg-red-600 hover:bg-red-700 text-lg px-8 py-4 pulse-glow"
+          className="bg-red-600 hover:bg-red-700 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 pulse-glow"
         >
           Let's work together
           <ArrowRight className="ml-2 h-5 w-5" />

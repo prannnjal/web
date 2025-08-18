@@ -64,16 +64,16 @@ export default function ContactSection() {
     <section id="contact" className="section-padding bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 fade-in-up">
-          <h2 className="section-title text-4xl lg:text-5xl text-white mb-4">
+        <div className="text-center mb-16 fade-in-up px-4">
+          <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-white mb-4">
             Let's <span className="gradient-text">Connect</span>
           </h2>
-          <p className="text-xl text-white/60 max-w-3xl mx-auto font-generalsans">
+          <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-generalsans">
             Ready to bring your vision to life? I'm here to help you create something extraordinary.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Information */}
           <div className="space-y-8 fade-in-up">
             <div>
@@ -115,7 +115,7 @@ export default function ContactSection() {
 
           {/* Contact Form */}
           <div className="fade-in-up">
-            <div className="glass-card p-8">
+            <div className="glass-card p-6 sm:p-8">
               <h3 className="text-2xl font-semibold text-white mb-6 font-generalsans">
                 Send a Message
               </h3>
@@ -132,7 +132,7 @@ export default function ContactSection() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <label htmlFor="name" className="block text-white mb-2 font-generalsans">
                         Name
