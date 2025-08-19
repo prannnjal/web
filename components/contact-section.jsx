@@ -42,6 +42,15 @@ export default function ContactSection() {
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+  // Quick quote form (left side)
+  const [quickFormData, setQuickFormData] = useState({
+    name: "",
+    businessName: "",
+    services: "",
+    budget: ""
+  })
+  const [isQuickSubmitted, setIsQuickSubmitted] = useState(false)
+
   const handleSubmit = (e) => {
     e.preventDefault()
     // Here you would typically send the form data to your backend
@@ -58,6 +67,21 @@ export default function ContactSection() {
       ...formData,
       [e.target.name]: e.target.value
     })
+  }
+
+  const handleQuickChange = (e) => {
+    setQuickFormData({
+      ...quickFormData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleQuickSubmit = (e) => {
+    e.preventDefault()
+    console.log("Quick quote submitted:", quickFormData)
+    setIsQuickSubmitted(true)
+    setQuickFormData({ name: "", businessName: "", services: "", budget: "" })
+    setTimeout(() => setIsQuickSubmitted(false), 3000)
   }
 
   return (
@@ -84,6 +108,86 @@ export default function ContactSection() {
                 Whether you have a project in mind or just want to chat about possibilities, 
                 I'd love to hear from you. Let's discuss how we can work together.
               </p>
+            </div>
+
+            {/* Quick Quote Form */}
+            <div className="glass-card p-6 sm:p-8">
+              <h4 className="text-xl font-semibold text-white mb-4 font-generalsans">Quick Quote</h4>
+              {isQuickSubmitted ? (
+                <div className="text-center py-4">
+                  <CheckCircle className="h-10 w-10 text-red-500 mx-auto mb-2" />
+                  <p className="text-white/80">Thanks! I'll reach out shortly.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleQuickSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="quick-name" className="block text-white mb-2 font-generalsans">Name</label>
+                    <Input
+                      id="quick-name"
+                      name="name"
+                      type="text"
+                      value={quickFormData.name}
+                      onChange={handleQuickChange}
+                      required
+                      className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="businessName" className="block text-white mb-2 font-generalsans">Business Name</label>
+                    <Input
+                      id="businessName"
+                      name="businessName"
+                      type="text"
+                      value={quickFormData.businessName}
+                      onChange={handleQuickChange}
+                      required
+                      className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
+                      placeholder="Your company"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="services" className="block text-white mb-2 font-generalsans">What services do you want?</label>
+                    <select
+                      id="services"
+                      name="services"
+                      value={quickFormData.services}
+                      onChange={handleQuickChange}
+                      required
+                      className="w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 focus:border-red-500 rounded-md px-3 py-2"
+                    >
+                      <option value="" className="text-black">Select a service</option>
+                      <option value="Web Development" className="text-black">Web Development</option>
+                      <option value="UI/UX Design" className="text-black">UI/UX Design</option>
+                      <option value="Mobile Development" className="text-black">Mobile Development</option>
+                      <option value="Digital Marketing" className="text-black">Digital Marketing</option>
+                      <option value="Business Intelligence" className="text-black">Business Intelligence</option>
+                      <option value="Performance Optimization" className="text-black">Performance Optimization</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="budget" className="block text-white mb-2 font-generalsans">Budget</label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      value={quickFormData.budget}
+                      onChange={handleQuickChange}
+                      required
+                      className="w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 focus:border-red-500 rounded-md px-3 py-2"
+                    >
+                      <option value="" className="text-black">Select a range</option>
+                      <option value="< $1,000" className="text-black">&lt; $1,000</option>
+                      <option value="$1,000 - $5,000" className="text-black">$1,000 - $5,000</option>
+                      <option value="$5,000 - $10,000" className="text-black">$5,000 - $10,000</option>
+                      <option value="> $10,000" className="text-black">&gt; $10,000</option>
+                    </select>
+                  </div>
+                  <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white font-generalsans">
+                    Get Quote
+                    <Send className="ml-2 h-4 w-4" />
+                  </Button>
+                </form>
+              )}
             </div>
 
             <div className="space-y-6">
