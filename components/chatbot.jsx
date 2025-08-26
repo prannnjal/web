@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from 'react'
-import { MessageCircle, X, Send, Bot, User, Sparkles } from 'lucide-react'
+import { MessageCircle, X, Send, Bot, User, Sparkles, Zap, Settings, Mic, MicOff, Volume2, VolumeX } from 'lucide-react'
 
 // Bot responses with comprehensive coverage including normal conversations
 const botResponses = {
@@ -372,7 +372,8 @@ export default function Chatbot() {
       id: '1',
       text: "Hello! I'm your AI assistant. I can help you with information about our services, answer questions, or just chat about anything you'd like. What would you like to talk about?",
       sender: 'bot',
-      timestamp: new Date()
+      timestamp: new Date(),
+      mode: 'builtin'
     }
   ])
   const [inputValue, setInputValue] = useState('')
@@ -383,8 +384,70 @@ export default function Chatbot() {
     userInterests: [],
     conversationLength: 0
   })
+  const [jarvisMode, setJarvisMode] = useState(false)
+  const [jarvisStatus, setJarvisStatus] = useState('disconnected')
+  const [jarvisEndpoint, setJarvisEndpoint] = useState('http://localhost:5000')
+  
+  // Voice recognition states
+  const [isListening, setIsListening] = useState(false)
+  const [isVoiceEnabled, setIsVoiceEnabled] = useState(true)
+  const [isSpeaking, setIsSpeaking] = useState(false)
+  const [recognition, setRecognition] = useState(null)
+  const [continuousListening, setContinuousListening] = useState(false)
+  
   const messagesEndRef = useRef(null)
   const inputRef = useRef(null)
+  const speechSynthesisRef = useRef(null)
+
+  // Check Jarvis server status on component mount
+  useEffect(() => {
+    checkJarvisStatus()
+  }, [])
+
+  // Check Jarvis server status
+  const checkJarvisStatus = async () => {
+    try {
+      const response = await fetch(`${jarvisEndpoint}/health`)
+      if (response.ok) {
+        const data = await response.json()
+        setJarvisStatus(data.jarvis_available ? 'connected' : 'limited')
+        console.log('Jarvis status:', data)
+      } else {
+        setJarvisStatus('disconnected')
+      }
+    } catch (error) {
+      setJarvisStatus('disconnected')
+      console.log('Jarvis server not available:', error.message)
+    }
+  }
+
+  // Send message to Jarvis API
+  const sendToJarvis = async (message, isVoice = false) => {
+    try {
+      const response = await fetch(`${jarvisEndpoint}/chat`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: message,
+          context: conversationContext,
+          is_voice: isVoice
+        })
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        return data.response
+      } else {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to get response from Jarvis')
+      }
+    } catch (error) {
+      console.error('Jarvis API error:', error)
+      throw error
+    }
+  }
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -398,15 +461,76 @@ export default function Chatbot() {
     }
   }, [isOpen])
 
+  // Initialize voice recognition
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'webkitSpeechRecognition' in window) {
+      const SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition
+      const recognition = new SpeechRecognition()
+      
+      recognition.continuous = false
+      recognition.interimResults = false
+      recognition.lang = 'en-US'
+      
+      recognition.onstart = () => {
+        setIsListening(true)
+        console.log('Voice recognition started')
+      }
+      
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript
+        setInputValue(transcript)
+        console.log('Voice input:', transcript)
+        
+        // Auto-send voice messages after a short delay
+        setTimeout(() => {
+          if (transcript.trim()) {
+            handleSendMessage(true) // Mark as voice input
+          }
+        }, 500)
+      }
+      
+      recognition.onerror = (event) => {
+        console.error('Voice recognition error:', event.error)
+        setIsListening(false)
+      }
+      
+      recognition.onend = () => {
+        setIsListening(false)
+        console.log('Voice recognition ended')
+        
+        // Restart listening if continuous mode is enabled
+        if (continuousListening && isVoiceEnabled) {
+          setTimeout(() => {
+            startListening()
+          }, 1000)
+        }
+      }
+      
+      setRecognition(recognition)
+    } else {
+      console.log('Speech recognition not supported')
+      setIsVoiceEnabled(false)
+    }
+  }, [continuousListening, isVoiceEnabled])
+
+  // Initialize speech synthesis
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      speechSynthesisRef.current = window.speechSynthesis
+    }
+  }, [])
+
   // Handle sending message with AI-like behavior
-  const handleSendMessage = async () => {
+  const handleSendMessage = async (isVoiceInput = false) => {
     if (!inputValue.trim()) return
 
     const userMessage = {
       id: Date.now().toString(),
       text: inputValue.trim(),
       sender: 'user',
-      timestamp: new Date()
+      timestamp: new Date(),
+      mode: jarvisMode ? 'jarvis' : 'builtin',
+      isVoice: isVoiceInput
     }
 
     setMessages(prev => [...prev, userMessage])
@@ -419,22 +543,49 @@ export default function Chatbot() {
       conversationLength: prev.conversationLength + 1
     }))
 
-    // Simulate AI processing with variable delay based on message complexity
-    const messageLength = userMessage.text.length
-    const baseDelay = 800
-    const complexityDelay = Math.min(messageLength * 10, 2000) // Longer messages take more "thinking" time
-    const totalDelay = baseDelay + complexityDelay + Math.random() * 1000
-
-    setTimeout(() => {
-      const botResponse = {
-        id: (Date.now() + 1).toString(),
-        text: getBotResponse(userMessage.text, messages),
-        sender: 'bot',
-        timestamp: new Date()
+    try {
+      let botResponse
+      
+      if (jarvisMode && jarvisStatus === 'connected') {
+        // Use Jarvis API
+        try {
+          botResponse = await sendToJarvis(userMessage.text, isVoiceInput)
+        } catch (error) {
+          console.error('Jarvis failed, falling back to built-in:', error)
+          botResponse = getBotResponse(userMessage.text, messages)
+        }
+      } else {
+        // Use built-in responses
+        botResponse = getBotResponse(userMessage.text, messages)
       }
-      setMessages(prev => [...prev, botResponse])
+
+      const botMessage = {
+        id: (Date.now() + 1).toString(),
+        text: botResponse,
+        sender: 'bot',
+        timestamp: new Date(),
+        mode: jarvisMode ? 'jarvis' : 'builtin'
+      }
+      
+      setMessages(prev => [...prev, botMessage])
+      
+      // Speak the response if voice is enabled
+      if (isVoiceEnabled) {
+        speakText(botResponse)
+      }
+    } catch (error) {
+      // Fallback response if everything fails
+      const fallbackMessage = {
+        id: (Date.now() + 1).toString(),
+        text: "I'm having trouble processing that request right now. Could you try rephrasing it?",
+        sender: 'bot',
+        timestamp: new Date(),
+        mode: 'builtin'
+      }
+      setMessages(prev => [...prev, fallbackMessage])
+    } finally {
       setIsTyping(false)
-    }, totalDelay)
+    }
   }
 
   // Handle Enter key
@@ -442,6 +593,102 @@ export default function Chatbot() {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
       handleSendMessage()
+    }
+  }
+
+  // Toggle Jarvis mode
+  const toggleJarvisMode = () => {
+    setJarvisMode(!jarvisMode)
+    if (!jarvisMode) {
+      // Check status when enabling Jarvis mode
+      checkJarvisStatus()
+    }
+  }
+
+  // Get status indicator color
+  const getStatusColor = () => {
+    switch (jarvisStatus) {
+      case 'connected':
+        return 'text-green-400'
+      case 'limited':
+        return 'text-yellow-400'
+      case 'disconnected':
+        return 'text-red-400'
+      default:
+        return 'text-gray-400'
+    }
+  }
+
+  // Get status text
+  const getStatusText = () => {
+    switch (jarvisStatus) {
+      case 'connected':
+        return 'Connected'
+      case 'limited':
+        return 'Limited'
+      case 'disconnected':
+        return 'Disconnected'
+      default:
+        return 'Unknown'
+    }
+  }
+
+  // Voice control functions
+  const startListening = () => {
+    if (recognition && isVoiceEnabled) {
+      try {
+        recognition.start()
+      } catch (error) {
+        console.error('Failed to start voice recognition:', error)
+      }
+    }
+  }
+
+  const stopListening = () => {
+    if (recognition) {
+      recognition.stop()
+    }
+  }
+
+  const toggleVoiceInput = () => {
+    if (isListening) {
+      stopListening()
+    } else {
+      startListening()
+    }
+  }
+
+  const speakText = (text) => {
+    if (speechSynthesisRef.current && isVoiceEnabled) {
+      // Stop any current speech
+      speechSynthesisRef.current.cancel()
+      
+      const utterance = new SpeechSynthesisUtterance(text)
+      utterance.rate = 0.9
+      utterance.pitch = 1
+      utterance.volume = 0.8
+      
+      utterance.onstart = () => setIsSpeaking(true)
+      utterance.onend = () => setIsSpeaking(false)
+      utterance.onerror = () => setIsSpeaking(false)
+      
+      speechSynthesisRef.current.speak(utterance)
+    }
+  }
+
+  const toggleVoiceOutput = () => {
+    setIsVoiceEnabled(!isVoiceEnabled)
+    if (!isVoiceEnabled && speechSynthesisRef.current) {
+      speechSynthesisRef.current.cancel()
+      setIsSpeaking(false)
+    }
+  }
+
+  const toggleContinuousListening = () => {
+    setContinuousListening(!continuousListening)
+    if (!continuousListening && isVoiceEnabled) {
+      // Start listening immediately when enabling continuous mode
+      startListening()
     }
   }
 
@@ -492,12 +739,68 @@ export default function Chatbot() {
                   <p className="text-xs text-gray-400">AI-powered support</p>
                 </div>
               </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-700/50 rounded-lg"
-              >
-                <X className="h-5 w-5" />
-              </button>
+              <div className="flex items-center space-x-2">
+                {/* Jarvis Mode Toggle */}
+                <button
+                  onClick={toggleJarvisMode}
+                  className={`relative p-2 rounded-lg transition-all duration-300 ${
+                    jarvisMode 
+                      ? 'bg-gradient-to-r from-purple-600 to-cyan-600 text-white' 
+                      : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
+                  }`}
+                  title={jarvisMode ? 'Switch to Built-in Mode' : 'Switch to Jarvis Mode'}
+                >
+                  <Zap className="h-4 w-4" />
+                  {jarvisMode && (
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  )}
+                </button>
+                
+                {/* Settings Button */}
+                <button
+                  onClick={() => {
+                    const newEndpoint = prompt('Enter Jarvis server endpoint:', jarvisEndpoint)
+                    if (newEndpoint && newEndpoint !== jarvisEndpoint) {
+                      setJarvisEndpoint(newEndpoint)
+                      checkJarvisStatus()
+                    }
+                  }}
+                  className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-700/50 rounded-lg"
+                  title="Configure Jarvis endpoint"
+                >
+                  <Settings className="h-5 w-5" />
+                </button>
+                
+                {/* Close Button */}
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-700/50 rounded-lg"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+            
+            {/* Mode Indicator */}
+            <div className="mt-3 flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <span className="text-xs text-gray-400">Mode:</span>
+                <span className={`text-xs font-medium ${
+                  jarvisMode ? 'text-purple-400' : 'text-blue-400'
+                }`}>
+                  {jarvisMode ? 'Jarvis AI' : 'Built-in AI'}
+                </span>
+              </div>
+              
+              {/* Jarvis Status */}
+              {jarvisMode && (
+                <div className="flex items-center space-x-2">
+                  <div className={`w-2 h-2 rounded-full ${getStatusColor().replace('text-', 'bg-')}`}></div>
+                  <span className={`text-xs ${getStatusColor()}`}>
+                    {getStatusText()}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -524,12 +827,24 @@ export default function Chatbot() {
                     )}
                     <div className="flex-1">
                       <p className="text-sm leading-relaxed break-words whitespace-pre-wrap">{message.text}</p>
-                      <p className="text-xs opacity-60 mt-2">
-                        {message.timestamp.toLocaleTimeString([], { 
-                          hour: '2-digit', 
-                          minute: '2-digit' 
-                        })}
-                      </p>
+                      <div className="flex items-center justify-between mt-2">
+                        <p className="text-xs opacity-60">
+                          {message.timestamp.toLocaleTimeString([], { 
+                            hour: '2-digit', 
+                            minute: '2-digit' 
+                          })}
+                        </p>
+                        {message.sender === 'bot' && (
+                          <div className="flex items-center space-x-1">
+                            {message.mode === 'jarvis' && (
+                              <Zap className="h-3 w-3 text-purple-400" title="Jarvis Response" />
+                            )}
+                            <span className="text-xs opacity-60">
+                              {message.mode === 'jarvis' ? 'Jarvis' : 'Built-in'}
+                            </span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                     {message.sender === 'user' && (
                       <User className="h-4 w-4 text-blue-200 flex-shrink-0 mt-1" />
@@ -553,7 +868,9 @@ export default function Chatbot() {
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
-                    <span className="text-xs text-gray-400 ml-2">AI is thinking...</span>
+                    <span className="text-xs text-gray-400 ml-2">
+                      {jarvisMode ? 'Jarvis is thinking...' : 'AI is thinking...'}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -565,6 +882,22 @@ export default function Chatbot() {
           {/* Next-Gen Input Area */}
           <div className="p-3 sm:p-4 pb-[env(safe-area-inset-bottom)] bg-gradient-to-r from-gray-900 to-gray-800 border-t border-gray-700/50 rounded-b-2xl">
             <div className="flex gap-2 sm:gap-3">
+              {/* Voice Input Button */}
+              {isVoiceEnabled && (
+                <button
+                  onClick={toggleVoiceInput}
+                  disabled={isTyping}
+                  className={`p-2 sm:p-3 rounded-xl transition-all duration-300 hover:scale-105 disabled:scale-100 ${
+                    isListening 
+                      ? 'bg-gradient-to-r from-red-600 to-pink-600 text-white animate-pulse' 
+                      : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
+                  }`}
+                  title={isListening ? 'Stop listening' : 'Start voice input'}
+                >
+                  {isListening ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
+                </button>
+              )}
+              
               <div className="flex-1 relative">
                 <input
                   ref={inputRef}
@@ -572,13 +905,47 @@ export default function Chatbot() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Ask me anything..."
+                  placeholder={jarvisMode ? "Ask Jarvis anything..." : "Ask me anything..."}
                   className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base bg-gray-800/80 border border-gray-700/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 backdrop-blur-sm transition-all"
                   disabled={isTyping}
                 />
                 {/* Input glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-xl pointer-events-none opacity-0 focus-within:opacity-100 transition-opacity"></div>
               </div>
+              
+              {/* Voice Output Toggle */}
+              <button
+                onClick={toggleVoiceOutput}
+                disabled={isTyping}
+                className={`p-2 sm:p-3 rounded-xl transition-all duration-300 hover:scale-105 disabled:scale-100 ${
+                  isVoiceEnabled 
+                    ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white' 
+                    : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
+                }`}
+                title={isVoiceEnabled ? 'Disable voice output' : 'Enable voice output'}
+              >
+                {isVoiceEnabled ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
+              </button>
+              
+              {/* Continuous Listening Toggle */}
+              <button
+                onClick={toggleContinuousListening}
+                disabled={isTyping || !isVoiceEnabled}
+                className={`p-2 sm:p-3 rounded-xl transition-all duration-300 hover:scale-105 disabled:scale-100 ${
+                  continuousListening 
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white animate-pulse' 
+                    : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
+                  }`}
+                title={continuousListening ? 'Disable continuous listening' : 'Enable continuous listening'}
+              >
+                <div className="relative">
+                  <Mic className="h-5 w-5" />
+                  {continuousListening && (
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                  )}
+                </div>
+              </button>
+              
               <button
                 onClick={handleSendMessage}
                 disabled={!inputValue.trim() || isTyping}
@@ -586,6 +953,53 @@ export default function Chatbot() {
               >
                 <Send className="h-5 w-5" />
               </button>
+            </div>
+            
+            {/* Mode Info */}
+            <div className="mt-2 text-xs text-gray-400 text-center">
+              {jarvisMode ? (
+                <span>
+                  💜 Jarvis Mode Active • {jarvisStatus === 'connected' ? 'Full AI capabilities' : 'Limited mode'}
+                </span>
+              ) : (
+                <span>
+                  🔵 Built-in Mode • Basic AI responses
+                </span>
+              )}
+            </div>
+            
+            {/* Voice Status */}
+            <div className="mt-2 flex items-center justify-center space-x-4 text-xs">
+              <div className="flex items-center space-x-1">
+                <Mic className={`h-3 w-3 ${isVoiceEnabled ? 'text-green-400' : 'text-gray-500'}`} />
+                <span className={isVoiceEnabled ? 'text-green-400' : 'text-gray-500'}>
+                  Voice Input {isVoiceEnabled ? 'ON' : 'OFF'}
+                </span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <Volume2 className={`h-3 w-3 ${isVoiceEnabled ? 'text-green-400' : 'text-gray-500'}`} />
+                <span className={isVoiceEnabled ? 'text-green-400' : 'text-gray-500'}>
+                  Voice Output {isVoiceEnabled ? 'ON' : 'OFF'}
+                </span>
+              </div>
+              {continuousListening && (
+                <div className="flex items-center space-x-1 text-blue-400">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Continuous</span>
+                </div>
+              )}
+              {isListening && (
+                <div className="flex items-center space-x-1 text-red-400 animate-pulse">
+                  <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                  <span>Listening...</span>
+                </div>
+              )}
+              {isSpeaking && (
+                <div className="flex items-center space-x-1 text-blue-400 animate-pulse">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Speaking...</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
