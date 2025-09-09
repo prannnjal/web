@@ -31,19 +31,19 @@ const testimonials = [
   {
     name: "Sarah Johnson",
     role: "CEO, TechStart",
-    content: "LeadBoostX transformed our digital presence completely. The results exceeded our expectations and our conversion rates increased by 300%.",
+    content: "Xylotek transformed our digital presence completely. The results exceeded our expectations and our conversion rates increased by 300%.",
     rating: 5
   },
   {
     name: "Michael Chen",
     role: "Founder, InnovateLab",
-    content: "Working with LeadBoostX was a game-changer. Their attention to detail and technical expertise delivered exactly what we needed.",
+    content: "Working with Xylotek was a game-changer. Their attention to detail and technical expertise delivered exactly what we needed.",
     rating: 5
   },
   {
     name: "Emily Rodriguez",
     role: "Marketing Director, GrowthCo",
-    content: "The level of professionalism and quality of work is outstanding. LeadBoostX consistently delivers beyond expectations.",
+    content: "The level of professionalism and quality of work is outstanding. Xylotek consistently delivers beyond expectations.",
     rating: 5
   }
 ]

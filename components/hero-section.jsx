@@ -95,7 +95,7 @@ export default function HeroSection() {
       {/* Text Content - Top Section */}
       <div className="w-full mx-auto flex flex-col mt-28 sm:mt-32 md:mt-36 lg:mt-20 text-center gap-3 z-10 px-4">
         <p className="sm:text-3xl text-xl font-medium text-white font-generalsans">
-          Welcome to LeadBoostX
+          Welcome to Xylotek
         </p>
         <p className="hero_tag text-white font-thin text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
           We craft next-gen UX.

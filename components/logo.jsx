@@ -17,7 +17,7 @@ export default function Logo({ className = "", size = "default" }) {
       <div className={`relative ${sizeClasses[size]} flex-shrink-0`}>
         <Image
           src="/Screenshot_2025-08-13_023958-removebg-preview.png"
-          alt="LeadBoostX Logo"
+          alt="Xylotek Logo"
           width={80}
           height={80}
           className="w-full h-full object-contain drop-shadow-lg"
@@ -32,7 +32,7 @@ export default function Logo({ className = "", size = "default" }) {
       {/* Text Logo */}
       <div className="flex flex-col flex-shrink-0">
         <span className="text-xl font-bold text-white font-generalsans leading-none">
-          LeadBoostX
+          Xylotek
         </span>
         <span className="text-xs text-gray-400 font-medium tracking-wider">
           NEXT-GEN UX
@@ -77,7 +77,7 @@ export function CompactLogo({ className = "" }) {
       <div className="relative h-8 w-8 flex-shrink-0">
         <Image
           src="/Screenshot_2025-08-13_023958-removebg-preview.png"
-          alt="LeadBoostX"
+          alt="Xylotek"
           width={32}
           height={32}
           className="w-full h-full object-contain drop-shadow-lg"
@@ -87,7 +87,7 @@ export function CompactLogo({ className = "" }) {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-full blur-sm opacity-50 pointer-events-none"></div>
       </div>
       <span className="text-lg font-bold text-white font-generalsans">
-        LeadBoostX
+        Xylotek
       </span>
     </div>
   )
@@ -99,7 +99,7 @@ export function FaviconLogo({ className = "" }) {
     <div className={`relative h-24 w-24 flex-shrink-0 ${className}`}>
       <Image
         src="/Screenshot_2025-08-13_023958-removebg-preview.png"
-        alt="LeadBoostX Favicon"
+        alt="Xylotek Favicon"
         width={96}
         height={96}
         className="w-full h-full object-contain drop-shadow-xl"

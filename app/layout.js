@@ -7,25 +7,25 @@ import Chatbot from "@/components/chatbot"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "LeadBoostX - Next-Gen UX Design & Development",
+  title: "Xylotek - Next-Gen UX Design & Development",
   description: "Crafting next-generation user experiences through innovative design and cutting-edge technology. We specialize in web development, mobile apps, and digital solutions.",
-  keywords: "LeadBoostX, UX design, web development, mobile apps, digital solutions, next-gen technology",
-  authors: [{ name: "LeadBoostX" }],
-  creator: "LeadBoostX",
-  publisher: "LeadBoostX",
+  keywords: "Xylotek, UX design, web development, mobile apps, digital solutions, next-gen technology",
+  authors: [{ name: "Xylotek" }],
+  creator: "Xylotek",
+  publisher: "Xylotek",
   robots: "index, follow",
   metadataBase: new URL('http://localhost:3000'),
   openGraph: {
-    title: "LeadBoostX - Next-Gen UX Design & Development",
+    title: "Xylotek - Next-Gen UX Design & Development",
     description: "Crafting next-generation user experiences through innovative design and cutting-edge technology.",
-    url: "https://leadboostx.com",
-    siteName: "LeadBoostX",
+    url: "https://xylotek.com",
+    siteName: "Xylotek",
     images: [
       {
         url: "/Screenshot_2025-08-13_023958-removebg-preview.png",
         width: 1200,
         height: 630,
-        alt: "LeadBoostX Logo",
+        alt: "Xylotek Logo",
       },
     ],
     locale: "en_US",
@@ -33,7 +33,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LeadBoostX - Next-Gen UX Design & Development",
+    title: "Xylotek - Next-Gen UX Design & Development",
     description: "Crafting next-generation user experiences through innovative design and cutting-edge technology.",
     images: ["/Screenshot_2025-08-13_023958-removebg-preview.png"],
   },

@@ -6,6 +6,11 @@ const nextConfig = {
   // Disable server-side features for static export
   trailingSlash: true,
   
+  // Disable image optimization for static export
+  images: {
+    unoptimized: true
+  },
+  
   // Existing configuration
   experimental: {
     // Add any experimental features here

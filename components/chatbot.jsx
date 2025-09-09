@@ -7,16 +7,16 @@ import { MessageCircle, X, Send, Bot, User, Sparkles, Zap, Settings, Mic, MicOff
 const botResponses = {
   // Business-related responses
   greeting: [
-    "Hello! Welcome to LeadBoostX. How can I help you today?",
+    "Hello! Welcome to Xylotek. How can I help you today?",
     "Hi there! I'm here to assist you with any questions about our services.",
     "Welcome! I'm your AI assistant. What would you like to know?",
-    "Greetings! I'm the LeadBoostX AI assistant, ready to help with any questions you have."
+    "Greetings! I'm the Xylotek AI assistant, ready to help with any questions you have."
   ],
   services: [
     "We specialize in crafting next-generation UX experiences. Our services include web development, mobile apps, and digital solutions.",
-    "At LeadBoostX, we create cutting-edge user experiences with modern technologies and innovative design approaches.",
+    "At Xylotek, we create cutting-edge user experiences with modern technologies and innovative design approaches.",
     "Our team crafts exceptional digital experiences using the latest technologies and design principles.",
-    "LeadBoostX offers comprehensive digital solutions: web development, mobile apps, UI/UX design, and digital transformation services."
+    "Xylotek offers comprehensive digital solutions: web development, mobile apps, UI/UX design, and digital transformation services."
   ],
   contact: [
     "You can reach us through our contact form or email us directly. We'd love to hear about your project!",
@@ -735,7 +735,7 @@ export default function Chatbot() {
                   <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white">LeadBoostX Assistant</h3>
+                  <h3 className="font-semibold text-white">Xylotek Assistant</h3>
                   <p className="text-xs text-gray-400">AI-powered support</p>
                 </div>
               </div>
