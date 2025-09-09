@@ -5,25 +5,25 @@ const socialLinks = [
   {
     name: "GitHub",
     icon: <Github className="h-5 w-5" />,
-    href: "https://github.com/leadboostx",
+    href: "https://github.com/xylotek",
     color: "hover:text-gray-400"
   },
   {
     name: "LinkedIn",
     icon: <Linkedin className="h-5 w-5" />,
-    href: "https://linkedin.com/in/leadboostx",
+    href: "https://linkedin.com/in/xylotek",
     color: "hover:text-blue-400"
   },
   {
     name: "Twitter",
     icon: <Twitter className="h-5 w-5" />,
-    href: "https://twitter.com/leadboostx",
+    href: "https://twitter.com/xylotek",
     color: "hover:text-blue-400"
   },
   {
     name: "Email",
     icon: <Mail className="h-5 w-5" />,
-    href: "mailto:hello@leadboostx.com",
+    href: "mailto:hello@xylotek.com",
     color: "hover:text-red-400"
   }
 ]
@@ -91,7 +91,7 @@ export default function Footer() {
               Contact
             </h4>
             <div className="space-y-2 text-white/60 font-generalsans">
-              <p>hello@leadboostx.com</p>
+              <p>hello@xylotek.com</p>
               <p>+1 (555) 123-4567</p>
               <p>Remote Worldwide</p>
             </div>

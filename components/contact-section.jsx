@@ -16,7 +16,7 @@ const contactInfo = [
   {
     icon: <Mail className="h-6 w-6" />,
     title: "Email",
-    details: "hello@leadboostx.com",
+    details: "hello@xylotek.com",
     description: "I'll respond within 24 hours"
   },
   {
