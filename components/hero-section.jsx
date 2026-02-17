@@ -201,8 +201,8 @@ export default function HeroSection() {
           <ThreeDModelError />
         ) : (
           <Suspense fallback={<ThreeDModelFallback />}>
-            <ThreeDModel 
-              className="w-full h-full" 
+            <ThreeDModel
+              className="w-full h-full"
               onError={() => setModelError(true)}
             />
           </Suspense>
@@ -211,8 +211,8 @@ export default function HeroSection() {
 
       {/* Call to Action Button - Bottom */}
       <div className="absolute bottom-5 left-0 right-0 w-full z-10 text-center pb-[env(safe-area-inset-bottom)]">
-        <Button 
-          size="lg" 
+        <Button
+          size="lg"
           className="bg-red-600 hover:bg-red-700 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 pulse-glow"
         >
           Let's work together
