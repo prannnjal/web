@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Github, Linkedin, Twitter, Mail } from "lucide-react"
 import Logo from "./logo"
 
@@ -29,11 +30,11 @@ const socialLinks = [
 ]
 
 const quickLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Work", href: "#work" },
-  { name: "Contact", href: "#contact" }
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Work", href: "/work" },
+  { name: "Contact", href: "/contact" }
 ]
 
 export default function Footer() {
@@ -44,10 +45,12 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="mb-4">
-              <Logo size="favicon" />
+              <Link href="/">
+                <Logo size="favicon" />
+              </Link>
             </div>
             <p className="text-white/60 mb-6 max-w-md leading-relaxed">
-              Crafting next-generation user experiences through innovative design and cutting-edge technology. 
+              Crafting next-generation user experiences through innovative design and cutting-edge technology.
               Let's build something extraordinary together.
             </p>
             <div className="flex space-x-4">
@@ -74,12 +77,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-white/60 hover:text-white transition-colors duration-300 font-generalsans"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -105,12 +108,12 @@ export default function Footer() {
               © 2025 Xylotek. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-white/60 hover:text-white text-sm transition-colors font-generalsans">
+              <Link href="#" className="text-white/60 hover:text-white text-sm transition-colors font-generalsans">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-white/60 hover:text-white text-sm transition-colors font-generalsans">
+              </Link>
+              <Link href="#" className="text-white/60 hover:text-white text-sm transition-colors font-generalsans">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>
