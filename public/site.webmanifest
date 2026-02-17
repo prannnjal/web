@@ -9,13 +9,17 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/Screenshot_2025-08-13_023958-removebg-preview.png",
+      "src": "/favicon.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
-  "categories": ["business", "productivity", "utilities"],
+  "categories": [
+    "business",
+    "productivity",
+    "utilities"
+  ],
   "lang": "en",
   "dir": "ltr"
 }

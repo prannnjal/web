@@ -7,62 +7,75 @@ import { MessageCircle, X, Send, Bot, User, Sparkles, Zap, Settings, Mic, MicOff
 const botResponses = {
   // Business-related responses
   greeting: [
-    "Hello! Welcome to Xylotek. How can I help you today?",
-    "Hi there! I'm here to assist you with any questions about our services.",
-    "Welcome! I'm your AI assistant. What would you like to know?",
-    "Greetings! I'm the Xylotek AI assistant, ready to help with any questions you have."
+    "Hello! Welcome to Xylotek. I can help you with meaningful digital solutions. How can I assist you today?",
+    "Hi there! I'm Xylotek's AI assistant. Ask me anything about our services, packages, or pricing!",
+    "Welcome! I'm here to help you navigate our digital offerings. What would you like to know?",
+    "Greetings! Ready to transform your ideas into reality? I can guide you through our process and services."
   ],
   services: [
-    "We specialize in crafting next-generation UX experiences. Our services include web development, mobile apps, and digital solutions.",
-    "At Xylotek, we create cutting-edge user experiences with modern technologies and innovative design approaches.",
-    "Our team crafts exceptional digital experiences using the latest technologies and design principles.",
-    "Xylotek offers comprehensive digital solutions: web development, mobile apps, UI/UX design, and digital transformation services."
+    "We offer a comprehensive range of digital services including: Web Development (React, Next.js), UI/UX Design, Mobile App Development, Digital Marketing, Business Intelligence, Performance Optimization, and Custom ERP Software.",
+    "Our core expertise covers Web Development, UI/UX Design, Mobile Apps, Digital Marketing, BI & Analytics, Performance Tuning, and specialized Custom ERP solutions for enterprise management.",
+    "We provide end-to-end digital solutions: from crafting beautiful websites and mobile apps to implementing complex ERP systems and driving growth with digital marketing."
+  ],
+  packages: [
+    "We have three main packages to suit different needs: \n\n1. **Starter ($299/mo)**: Perfect for small businesses. Includes website maintenance, basic social media (8 posts), and email support.\n2. **Growth ($599/mo)**: Ideal for scaling. Adds landing page updates, more social posts (15/mo), ad management, and priority support.\n3. **Premium ($999/mo)**: The complete solution. Custom dev, full social management, content production, dedicated account manager, and 24/7 priority support.",
+    "Our pricing is transparent: Starter at $299/mo, Growth at $599/mo, and Premium at $999/mo. Each builds on the last with more features and support. Which one interests you?",
+    "You can choose from our Starter ($299), Growth ($599), or Premium ($999) monthly packages. We also offer custom quotes for unique project requirements."
+  ],
+  results: [
+    "We're proud of our track record! We've completed over 500 projects with a 98% client satisfaction rate. Our clients see an average 3.2x ROI on their digital investments.",
+    "Our numbers speak for themselves: 500+ projects delivered, 98% satisfaction, and 24/7 support available. We consistently drive measurable business impact.",
+    "Clients love working with us! We have a 5-star rating from industry leaders like TechStart and InnovateLab, who praise our attention to detail and technical expertise."
   ],
   contact: [
-    "You can reach us through our contact form or email us directly. We'd love to hear about your project!",
-    "Feel free to use our contact section or send us a message. We're always excited to discuss new opportunities.",
-    "Get in touch with us through the contact form on our website. Let's discuss how we can help bring your vision to life!",
-    "Contact us anytime! We're here to help turn your ideas into reality."
+    "You can reach us at **+1 (555) 123-4567** (Mon-Fri, 9AM-6PM) or email **hello@xylotek.com**. We aim to respond within 24 hours!",
+    "Feel free to use the contact form on this page, or email us directly at **hello@xylotek.com**. We're fully remote and work with clients worldwide.",
+    "Get in touch! Call us at +1 (555) 123-4567 or drop an email to hello@xylotek.com. You can also schedule a consultation directly through our website."
+  ],
+  erp: [
+    "Our Custom ERP Software solutions are tailored to streamline your business. We cover Inventory Management, HR & Payroll, CRM Integration, and Automated Workflows.",
+    "Need an ERP? We build custom Enterprise Resource Planning systems to manage your specific business processes efficiently, from HR to Inventory.",
+    "Yes, we specialize in Custom ERP Software! We can build a solution that integrates perfectly with your existing workflows for maximum efficiency."
   ],
   pricing: [
-    "Our pricing varies based on project scope and requirements. We offer competitive rates and flexible packages. Would you like to discuss your specific project?",
-    "We provide transparent pricing with no hidden costs. Each project is unique, so we'd love to understand your needs and provide a custom quote.",
-    "Our pricing is project-based and depends on complexity, timeline, and features. Let's schedule a consultation to discuss your requirements."
+    "Our packages start at $299/month for the Starter plan. The Growth plan is $599/month, and our Premium plan is $999/month. We also offer custom quotes for specific projects.",
+    "We believe in transparent pricing. Starter: $299/mo, Growth: $599/mo, Premium: $999/mo. Need something else? Let's discuss a custom solution.",
+    "Investment options: Starter ($299/mo), Growth ($599/mo), or Premium ($999/mo). All include our core expertise and support."
   ],
   technology: [
-    "We use cutting-edge technologies including React, Next.js, Node.js, Python, and modern cloud platforms. Our tech stack is always up-to-date with industry best practices.",
-    "Our technology stack includes modern frameworks, cloud solutions, and the latest development tools to ensure scalable and maintainable solutions.",
-    "We leverage the latest technologies in web development, mobile development, and cloud infrastructure to deliver robust solutions."
+    "We use the latest tech stack: React, Next.js, TypeScript for web; React Native for mobile; and modern cloud infrastructure. For ERPs, we use robust, scalable database solutions.",
+    "Our tech stack is cutting-edge: Next.js & React for frontend, Node.js/Python for backend, and secure cloud hosting. We optimize everything for speed and SEO.",
+    "We build with modern tools like React, Next.js, and TypeScript to ensure your project is fast, secure, and scalable."
   ],
   experience: [
-    "Our team has extensive experience across various industries including e-commerce, healthcare, finance, and education. We've successfully delivered 100+ projects.",
-    "With years of experience in digital transformation, we've helped businesses of all sizes achieve their digital goals and improve user experiences.",
-    "We have a proven track record of delivering successful projects across multiple sectors, from startups to enterprise-level organizations."
+    "We have successfully delivered over 500 projects across various industries. Our team brings years of expert experience in design, development, and digital strategy.",
+    "With 500+ completed projects and a 98% satisfaction rate, we have the experience to handle any digital challenge you throw at us.",
+    "We're experienced pros! We've helped hundreds of clients achieve their digital goals with a proven 3.2x average ROI."
   ],
   timeline: [
-    "Project timelines vary based on complexity. Simple websites take 2-4 weeks, while complex applications can take 3-6 months. We'll provide a detailed timeline during our consultation.",
-    "We work efficiently to deliver quality results. Most projects are completed within 4-12 weeks, depending on scope and requirements.",
-    "Timelines are project-specific. We'll create a detailed project plan with milestones to keep you informed throughout the development process."
+    "For our standard packages, setup is fast - typically within 48 hours! Custom projects vary, but we pride ourselves on efficient delivery.",
+    "Starter and Growth packages can be up and running in 48 hours. Custom web or ERP projects will have a timeline tailored to their complexity.",
+    "We work fast! Package onboarding takes about 2 days. Custom projects are planned in detail with clear milestones."
   ],
   process: [
-    "Our development process includes discovery, planning, design, development, testing, and deployment. We maintain clear communication at every stage.",
-    "We follow an agile methodology with regular updates and feedback loops. This ensures your project stays on track and meets your expectations.",
-    "Our process is collaborative and transparent. We involve you in key decisions and provide regular progress updates throughout development."
+    "Our process is simple: Choose a package or request a quote -> We onboard you within 48h -> We start delivering results immediately with regular reporting.",
+    "We believe in agility. 1. Discovery/Selection 2. Quick Setup/Development 3. Launch/Execution 4. Optimization & Reporting.",
+    "We keep it streamlined. From kick-off to launch, we maintain clear communication and provide full transparency on progress."
   ],
   portfolio: [
-    "We have an extensive portfolio showcasing our work across various industries. You can see examples of our projects on our website.",
-    "Our portfolio demonstrates our expertise in creating user-friendly, scalable solutions. We'd be happy to share relevant case studies for your industry.",
-    "We've successfully delivered projects for clients in healthcare, finance, e-commerce, and more. Each project showcases our commitment to quality and innovation."
+    "You can see our proven results in the 'Results' section! We've worked with companies like TechStart, InnovateLab, and GrowthCo.",
+    "Check out our success stories on the page. We've driven 300% conversion increases and transformed digital presences for diverse clients.",
+    "Our work speaks for itself. 500+ projects, 5-star reviews. We'd be happy to walk you through specific case studies relevant to your industry."
   ],
   team: [
-    "Our team consists of experienced developers, designers, and project managers who are passionate about creating exceptional digital experiences.",
-    "We have a diverse team of experts in frontend development, backend development, UI/UX design, and project management.",
-    "Our team brings together years of experience in digital development, ensuring we deliver solutions that exceed expectations."
+    "We are a team of expert developers, designers, and strategists dedicated to your success. We work as an extension of your business.",
+    "The Xylotek team consists of passionate digital experts. From UI/UX designers to full-stack engineers, we have the talent to deliver.",
+    "Our team is your team. You'll have dedicated support (and a dedicated account manager on the Premium plan) to ensure everything runs smoothly."
   ],
   support: [
-    "We provide ongoing support and maintenance for all our projects. We're here to help ensure your digital solution continues to perform optimally.",
-    "Post-launch support is included in our service. We offer maintenance, updates, and technical support to keep your solution running smoothly.",
-    "We believe in building long-term relationships with our clients. Our support team is always available to help with any questions or issues."
+    "Support is key! Starter plans get 24h email response. Growth gets 12h priority support. Premium gets 24/7 priority access.",
+    "We're always here. Support availability ranges from standard email support to 24/7 priority access depending on your chosen package.",
+    "Need help? Our support team is available 24/7 for Premium clients. All clients get access to our dedicated support channels."
   ],
 
   // Normal conversation responses
@@ -287,24 +300,42 @@ function getBotResponse(userMessage, conversationHistory = []) {
     return "The future of technology is incredibly exciting! We're seeing rapid advancements in AI, renewable energy, biotechnology, space exploration, and more. These developments have the potential to solve major challenges while also raising important questions about their impact on society. What technological developments are you most excited about or concerned about?"
   }
 
-  // Business-related responses (existing logic)
+  // Business-related responses
   if (message.includes('service') || message.includes('what do you do') || message.includes('work') || message.includes('offer') || message.includes('provide') || message.includes('specialize')) {
+    if (message.includes('erp') || message.includes('enterprise') || message.includes('inventory') || message.includes('hr') || message.includes('payroll')) {
+      return botResponses.erp[Math.floor(Math.random() * botResponses.erp.length)]
+    }
     return botResponses.services[Math.floor(Math.random() * botResponses.services.length)]
   }
 
-  if (message.includes('contact') || message.includes('reach') || message.includes('email') || message.includes('phone') || message.includes('call') || message.includes('message') || message.includes('get in touch')) {
-    return botResponses.contact[Math.floor(Math.random() * botResponses.contact.length)]
+  // Packages & Pricing
+  if (message.includes('package') || message.includes('plan') || message.includes('starter') || message.includes('growth') || message.includes('premium')) {
+    return botResponses.packages[Math.floor(Math.random() * botResponses.packages.length)]
   }
 
   if (message.includes('price') || message.includes('cost') || message.includes('how much') || message.includes('quote') || message.includes('budget') || message.includes('afford') || message.includes('expensive')) {
     return botResponses.pricing[Math.floor(Math.random() * botResponses.pricing.length)]
   }
 
+  // Results & Stats
+  if (message.includes('result') || message.includes('roi') || message.includes('satisfaction') || message.includes('success') || message.includes('rating') || message.includes('review')) {
+    return botResponses.results[Math.floor(Math.random() * botResponses.results.length)]
+  }
+
+  // ERP Specific
+  if (message.includes('erp') || message.includes('software') || message.includes('system')) {
+    return botResponses.erp[Math.floor(Math.random() * botResponses.erp.length)]
+  }
+
+  if (message.includes('contact') || message.includes('reach') || message.includes('email') || message.includes('phone') || message.includes('call') || message.includes('message') || message.includes('get in touch') || message.includes('address') || message.includes('location')) {
+    return botResponses.contact[Math.floor(Math.random() * botResponses.contact.length)]
+  }
+
   if (message.includes('technology') || message.includes('tech') || message.includes('framework') || message.includes('stack') || message.includes('programming') || message.includes('code') || message.includes('development') || message.includes('platform')) {
     return botResponses.technology[Math.floor(Math.random() * botResponses.technology.length)]
   }
 
-  if (message.includes('experience') || message.includes('years') || message.includes('track record') || message.includes('success') || message.includes('clients') || message.includes('projects') || message.includes('portfolio')) {
+  if (message.includes('experience') || message.includes('years') || message.includes('track record') || message.includes('success') || message.includes('clients') || message.includes('projects') || message.includes('portfolio') || message.includes('history')) {
     return botResponses.experience[Math.floor(Math.random() * botResponses.experience.length)]
   }
 
@@ -759,8 +790,8 @@ export default function Chatbot() {
                 <button
                   onClick={toggleJarvisMode}
                   className={`relative p-2 rounded-lg transition-all duration-300 ${jarvisMode
-                      ? 'bg-gradient-to-r from-purple-600 to-cyan-600 text-white'
-                      : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
+                    ? 'bg-gradient-to-r from-purple-600 to-cyan-600 text-white'
+                    : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
                     }`}
                   title={jarvisMode ? 'Switch to Built-in Mode' : 'Switch to Jarvis Mode'}
                 >
@@ -826,8 +857,8 @@ export default function Chatbot() {
               >
                 <div
                   className={`max-w-[85%] sm:max-w-[80%] p-3 sm:p-4 rounded-2xl ${message.sender === 'user'
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-br-md shadow-lg'
-                      : 'bg-gray-800/80 text-gray-100 rounded-bl-md border border-gray-700/50 backdrop-blur-sm'
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-br-md shadow-lg'
+                    : 'bg-gray-800/80 text-gray-100 rounded-bl-md border border-gray-700/50 backdrop-blur-sm'
                     }`}
                 >
                   <div className="flex items-start space-x-3">
@@ -900,8 +931,8 @@ export default function Chatbot() {
                   onClick={toggleVoiceInput}
                   disabled={isTyping}
                   className={`p-2 sm:p-3 rounded-xl transition-all duration-300 hover:scale-105 disabled:scale-100 ${isListening
-                      ? 'bg-gradient-to-r from-red-600 to-pink-600 text-white animate-pulse'
-                      : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
+                    ? 'bg-gradient-to-r from-red-600 to-pink-600 text-white animate-pulse'
+                    : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
                     }`}
                   title={isListening ? 'Stop listening' : 'Start voice input'}
                 >
@@ -929,8 +960,8 @@ export default function Chatbot() {
                 onClick={toggleVoiceOutput}
                 disabled={isTyping}
                 className={`p-2 sm:p-3 rounded-xl transition-all duration-300 hover:scale-105 disabled:scale-100 ${isVoiceEnabled
-                    ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white'
-                    : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
+                  ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white'
+                  : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
                   }`}
                 title={isVoiceEnabled ? 'Disable voice output' : 'Enable voice output'}
               >
@@ -942,8 +973,8 @@ export default function Chatbot() {
                 onClick={toggleContinuousListening}
                 disabled={isTyping || !isVoiceEnabled}
                 className={`p-2 sm:p-3 rounded-xl transition-all duration-300 hover:scale-105 disabled:scale-100 ${continuousListening
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white animate-pulse'
-                    : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white animate-pulse'
+                  : 'bg-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-600/50'
                   }`}
                 title={continuousListening ? 'Disable continuous listening' : 'Enable continuous listening'}
               >

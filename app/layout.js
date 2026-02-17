@@ -22,7 +22,7 @@ export const metadata = {
     siteName: "Xylotek",
     images: [
       {
-        url: "/Screenshot_2025-08-13_023958-removebg-preview.png",
+        url: "/ChatGPT_Image_Feb_18__2026__12_52_36_AM-removebg-preview.png",
         width: 1200,
         height: 630,
         alt: "Xylotek Logo",
@@ -35,16 +35,16 @@ export const metadata = {
     card: "summary_large_image",
     title: "Xylotek - Next-Gen UX Design & Development",
     description: "Crafting next-generation user experiences through innovative design and cutting-edge technology.",
-    images: ["/Screenshot_2025-08-13_023958-removebg-preview.png"],
+    images: ["/ChatGPT_Image_Feb_18__2026__12_52_36_AM-removebg-preview.png"],
   },
   icons: {
     icon: [
-      { url: "/Screenshot_2025-08-13_023958-removebg-preview.png", sizes: "any" },
+      { url: "/favicon.png", sizes: "any" },
     ],
     apple: [
-      { url: "/Screenshot_2025-08-13_023958-removebg-preview.png", sizes: "180x180", type: "image/png" },
+      { url: "/favicon.png", sizes: "180x180", type: "image/png" },
     ],
-    shortcut: "/Screenshot_2025-08-13_023958-removebg-preview.png",
+    shortcut: "/favicon.png",
   },
   manifest: "/site.webmanifest",
 }
@@ -59,8 +59,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/Screenshot_2025-08-13_023958-removebg-preview.png" sizes="any" />
-        <link rel="apple-touch-icon" href="/Screenshot_2025-08-13_023958-removebg-preview.png" />
+        <link rel="icon" href="/favicon.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
       </head>

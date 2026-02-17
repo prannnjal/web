@@ -19,12 +19,7 @@ const contactInfo = [
     details: "hello@xylotek.com",
     description: "I'll respond within 24 hours"
   },
-  {
-    icon: <MapPin className="h-6 w-6" />,
-    title: "Location",
-    details: "Remote Worldwide",
-    description: "Working with clients globally"
-  },
+
   {
     icon: <Clock className="h-6 w-6" />,
     title: "Response Time",
@@ -57,7 +52,7 @@ export default function ContactSection() {
     console.log("Form submitted:", formData)
     setIsSubmitted(true)
     setFormData({ name: "", email: "", subject: "", message: "" })
-    
+
     // Reset submission status after 3 seconds
     setTimeout(() => setIsSubmitted(false), 3000)
   }
@@ -105,7 +100,7 @@ export default function ContactSection() {
                 Get in Touch
               </h3>
               <p className="text-white/60 mb-8 leading-relaxed">
-                Whether you have a project in mind or just want to chat about possibilities, 
+                Whether you have a project in mind or just want to chat about possibilities,
                 I'd love to hear from you. Let's discuss how we can work together.
               </p>
             </div>
@@ -192,7 +187,7 @@ export default function ContactSection() {
 
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
-                <div 
+                <div
                   key={index}
                   className="glass-card p-6 hover:bg-white/5 transition-all duration-300"
                 >
@@ -223,7 +218,7 @@ export default function ContactSection() {
               <h3 className="text-2xl font-semibold text-white mb-6 font-generalsans">
                 Send a Message
               </h3>
-              
+
               {isSubmitted ? (
                 <div className="text-center py-8">
                   <CheckCircle className="h-16 w-16 text-red-500 mx-auto mb-4" />
@@ -268,7 +263,7 @@ export default function ContactSection() {
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <label htmlFor="subject" className="block text-white mb-2 font-generalsans">
                       Subject
@@ -284,7 +279,7 @@ export default function ContactSection() {
                       placeholder="What's this about?"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="message" className="block text-white mb-2 font-generalsans">
                       Message
@@ -300,8 +295,8 @@ export default function ContactSection() {
                       placeholder="Tell me about your project..."
                     />
                   </div>
-                  
-                  <Button 
+
+                  <Button
                     type="submit"
                     size="lg"
                     className="w-full bg-red-600 hover:bg-red-700 text-white font-generalsans"
@@ -325,13 +320,13 @@ export default function ContactSection() {
               Let's schedule a call to discuss your requirements and explore how we can work together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <Button
                 size="lg"
                 className="bg-red-600 hover:bg-red-700 text-white font-generalsans"
               >
                 Schedule a Call
               </Button>
-              <Button 
+              <Button
                 variant="outline"
                 size="lg"
                 className="border-white/20 hover:bg-white/5 text-white font-generalsans"

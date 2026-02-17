@@ -5,7 +5,7 @@ import Image from "next/image"
 export default function Logo({ className = "", size = "default" }) {
   const sizeClasses = {
     small: "h-8 w-8",
-    default: "h-10 w-10", 
+    default: "h-10 w-10",
     large: "h-12 w-12",
     xlarge: "h-16 w-16",
     favicon: "h-20 w-20"
@@ -16,7 +16,7 @@ export default function Logo({ className = "", size = "default" }) {
       {/* Logo Icon */}
       <div className={`relative ${sizeClasses[size]} flex-shrink-0`}>
         <Image
-          src="/Screenshot_2025-08-13_023958-removebg-preview.png"
+          src="/ChatGPT_Image_Feb_18__2026__12_52_36_AM-removebg-preview.png"
           alt="Xylotek Logo"
           width={80}
           height={80}
@@ -24,11 +24,11 @@ export default function Logo({ className = "", size = "default" }) {
           priority
           quality={95}
         />
-        
+
         {/* Subtle Glow Effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-full blur-sm opacity-50 pointer-events-none"></div>
       </div>
-      
+
       {/* Text Logo */}
       <div className="flex flex-col flex-shrink-0">
         <span className="text-xl font-bold text-white font-generalsans leading-none">
@@ -63,7 +63,7 @@ export function LogoIcon({ className = "", size = "default" }) {
         priority
         quality={95}
       />
-      
+
       {/* Subtle Glow Effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-full blur-sm opacity-50 pointer-events-none"></div>
     </div>
@@ -76,7 +76,7 @@ export function CompactLogo({ className = "" }) {
     <div className={`flex items-center space-x-2 ${className}`}>
       <div className="relative h-8 w-8 flex-shrink-0">
         <Image
-          src="/Screenshot_2025-08-13_023958-removebg-preview.png"
+          src="/ChatGPT_Image_Feb_18__2026__12_52_36_AM-removebg-preview.png"
           alt="Xylotek"
           width={32}
           height={32}
@@ -106,7 +106,7 @@ export function FaviconLogo({ className = "" }) {
         priority
         quality={100}
       />
-      
+
       {/* Enhanced Glow Effect for Favicon */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-full blur-md opacity-60 pointer-events-none"></div>
     </div>

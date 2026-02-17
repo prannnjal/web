@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Code, Palette, Smartphone, Globe, BarChart3, Zap } from "lucide-react"
+import { ArrowRight, Code, Palette, Smartphone, Globe, BarChart3, Zap, Database } from "lucide-react"
 
 const services = [
   {
@@ -39,6 +39,12 @@ const services = [
     title: "Performance Optimization",
     description: "Speed up your applications and improve user experience through optimization.",
     features: ["Code Optimization", "Database Tuning", "CDN Setup", "Monitoring"]
+  },
+  {
+    icon: <Database className="h-8 w-8" />,
+    title: "Custom ERP Software",
+    description: "Tailored Enterprise Resource Planning solutions to streamline your business operations.",
+    features: ["Inventory Management", "HR & Payroll", "CRM Integration", "Automated Workflows"]
   }
 ]
 
@@ -49,7 +55,7 @@ export default function ServicesSection() {
         {/* Section Header */}
         <div className="text-center mb-16 fade-in-up px-4">
           <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-white mb-4">
-            What I <span className="gradient-text">Create</span>
+            What We <span className="gradient-text">Create</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-generalsans">
             Comprehensive digital solutions that transform ideas into powerful, user-centric experiences.
@@ -59,7 +65,7 @@ export default function ServicesSection() {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
-            <div 
+            <div
               key={index}
               className="glass-card p-6 sm:p-8 hover:bg-white/5 transition-all duration-300 group fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
@@ -67,15 +73,15 @@ export default function ServicesSection() {
               <div className="text-red-500 mb-6 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
-              
+
               <h3 className="text-2xl font-semibold text-white mb-4 font-generalsans">
                 {service.title}
               </h3>
-              
+
               <p className="text-white/60 mb-6 leading-relaxed">
                 {service.description}
               </p>
-              
+
               <ul className="space-y-2 mb-6">
                 {service.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-center text-white/70">
@@ -84,9 +90,9 @@ export default function ServicesSection() {
                   </li>
                 ))}
               </ul>
-              
-              <Button 
-                variant="ghost" 
+
+              <Button
+                variant="ghost"
                 className="text-red-500 hover:text-red-400 hover:bg-red-500/10 p-0 h-auto font-generalsans"
               >
                 Learn More
@@ -103,10 +109,10 @@ export default function ServicesSection() {
               Ready to Start Your Project?
             </h3>
             <p className="text-white/60 mb-6">
-              Let's discuss how I can help bring your vision to life with cutting-edge technology and design.
+              Let's discuss how we can help bring your vision to life with cutting-edge technology and design.
             </p>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-red-600 hover:bg-red-700 text-white font-generalsans"
             >
               Start a Conversation
