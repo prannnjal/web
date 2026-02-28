@@ -3,8 +3,22 @@ import { Check, Star, ArrowRight } from "lucide-react"
 
 const packages = [
   {
+    name: "Basic",
+    price: "₹4,999",
+    period: "",
+    description: "We build a basic website to get your business online",
+    features: [
+      "Custom website design",
+      "Mobile responsive layout",
+      "Contact form integration",
+      "Domain & hosting assistance",
+    ],
+    popular: false,
+    color: "from-gray-400 to-gray-500"
+  },
+  {
     name: "Starter",
-    price: "$299",
+    price: "₹24,999",
     period: "/month",
     description: "Perfect for small businesses getting started with digital presence",
     features: [
@@ -20,7 +34,7 @@ const packages = [
   },
   {
     name: "Growth",
-    price: "$599",
+    price: "₹49,999",
     period: "/month",
     description: "Ideal for growing businesses ready to scale their digital operations",
     features: [
@@ -37,7 +51,7 @@ const packages = [
   },
   {
     name: "Premium",
-    price: "$999",
+    price: "₹82,999",
     period: "/month",
     description: "Complete solution for established businesses with complex needs",
     features: [
@@ -65,55 +79,53 @@ export default function PackagesSection() {
             Choose Your <span className="gradient-text">Growth</span> Package
           </h2>
           <p className="text-xl text-white/60 max-w-3xl mx-auto font-generalsans">
-            Flexible packages designed to scale with your business. All plans include our core digital expertise 
+            Flexible packages designed to scale with your business. All plans include our core digital expertise
             and proven results.
           </p>
         </div>
 
         {/* Packages Grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16">
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className={`relative group fade-in-up ${
-                pkg.popular ? "sm:scale-105" : ""
-              }`}
+              className={`relative group fade-in-up ${pkg.popular ? "sm:scale-105" : ""
+                }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {pkg.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <div className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-full text-sm font-semibold flex items-center shadow-lg">
+                  <div className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-full text-sm font-semibold flex items-center shadow-lg whitespace-nowrap">
                     <Star className="h-4 w-4 mr-2 fill-current" />
                     Most Popular
                   </div>
                 </div>
               )}
 
-              <div className={`glass-card p-8 h-full transition-all duration-300 hover:bg-white/5 ${
-                pkg.popular ? "ring-2 ring-red-500/50" : ""
-              }`}>
+              <div className={`glass-card p-6 xl:p-8 h-full flex flex-col transition-all duration-300 hover:bg-white/5 ${pkg.popular ? "ring-2 ring-red-500/50" : ""
+                }`}>
                 {/* Package Header */}
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-semibold text-white mb-4 font-generalsans">
+                  <h3 className="text-xl xl:text-2xl font-semibold text-white mb-4 font-generalsans">
                     {pkg.name}
                   </h3>
                   <div className="mb-4">
-                    <span className="text-4xl font-bold text-white font-generalsans">
+                    <span className="text-3xl xl:text-4xl font-bold text-white font-generalsans">
                       {pkg.price}
                     </span>
-                    <span className="text-white/60 text-lg ml-1">
+                    <span className="text-white/60 text-base xl:text-lg ml-1">
                       {pkg.period}
                     </span>
                   </div>
-                  <p className="text-white/60 leading-relaxed">
+                  <p className="text-white/60 text-sm xl:text-base leading-relaxed">
                     {pkg.description}
                   </p>
                 </div>
 
                 {/* Features List */}
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-4 mb-8 flex-1">
                   {pkg.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start">
+                    <li key={featureIndex} className="flex items-start text-sm xl:text-base">
                       <div className="w-1.5 h-1.5 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
                       <span className="text-white/80 leading-relaxed">
                         {feature}
@@ -124,11 +136,10 @@ export default function PackagesSection() {
 
                 {/* CTA Button */}
                 <Button
-                  className={`w-full font-generalsans ${
-                    pkg.popular 
-                      ? "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800" 
-                      : "bg-white/10 hover:bg-white/20 border border-white/20"
-                  } text-white transition-all duration-300`}
+                  className={`w-full mt-auto font-generalsans ${pkg.popular
+                    ? "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800"
+                    : "bg-white/10 hover:bg-white/20 border border-white/20"
+                    } text-white transition-all duration-300`}
                   size="lg"
                 >
                   Get Started
@@ -146,18 +157,18 @@ export default function PackagesSection() {
               Need a Custom Solution?
             </h3>
             <p className="text-white/60 mb-6 font-generalsans">
-              Every business is unique. Let's create a tailored package that perfectly fits your specific 
+              Every business is unique. Let's create a tailored package that perfectly fits your specific
               requirements and goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <Button
                 size="lg"
                 className="bg-red-600 hover:bg-red-700 text-white font-generalsans"
               >
                 Request Custom Quote
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button 
+              <Button
                 variant="outline"
                 size="lg"
                 className="border-white/20 hover:bg-white/5 text-white font-generalsans"

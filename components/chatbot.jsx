@@ -18,9 +18,9 @@ const botResponses = {
     "We provide end-to-end digital solutions: from crafting beautiful websites and mobile apps to implementing complex ERP systems and driving growth with digital marketing."
   ],
   packages: [
-    "We have three main packages to suit different needs: \n\n1. **Starter ($299/mo)**: Perfect for small businesses. Includes website maintenance, basic social media (8 posts), and email support.\n2. **Growth ($599/mo)**: Ideal for scaling. Adds landing page updates, more social posts (15/mo), ad management, and priority support.\n3. **Premium ($999/mo)**: The complete solution. Custom dev, full social management, content production, dedicated account manager, and 24/7 priority support.",
-    "Our pricing is transparent: Starter at $299/mo, Growth at $599/mo, and Premium at $999/mo. Each builds on the last with more features and support. Which one interests you?",
-    "You can choose from our Starter ($299), Growth ($599), or Premium ($999) monthly packages. We also offer custom quotes for unique project requirements."
+    "We have four main packages to suit different needs: \n\n1. **Basic (₹4,999)**: We build a basic website to get your business online.\n2. **Starter (₹24,999/mo)**: Perfect for small businesses. Includes website maintenance, basic social media (8 posts), and email support.\n3. **Growth (₹49,999/mo)**: Ideal for scaling. Adds landing page updates, more social posts (15/mo), ad management, and priority support.\n4. **Premium (₹82,999/mo)**: The complete solution. Custom dev, full social management, content production, dedicated account manager, and 24/7 priority support.",
+    "Our pricing is transparent: Basic at ₹4,999, Starter at ₹24,999/mo, Growth at ₹49,999/mo, and Premium at ₹82,999/mo. Each builds on the last with more features and support. Which one interests you?",
+    "You can choose from our Basic (₹4,999), Starter (₹24,999/mo), Growth (₹49,999/mo), or Premium (₹82,999/mo) packages. We also offer custom quotes for unique project requirements."
   ],
   results: [
     "We're proud of our track record! We've completed over 500 projects with a 98% client satisfaction rate. Our clients see an average 3.2x ROI on their digital investments.",
@@ -38,9 +38,9 @@ const botResponses = {
     "Yes, we specialize in Custom ERP Software! We can build a solution that integrates perfectly with your existing workflows for maximum efficiency."
   ],
   pricing: [
-    "Our packages start at $299/month for the Starter plan. The Growth plan is $599/month, and our Premium plan is $999/month. We also offer custom quotes for specific projects.",
-    "We believe in transparent pricing. Starter: $299/mo, Growth: $599/mo, Premium: $999/mo. Need something else? Let's discuss a custom solution.",
-    "Investment options: Starter ($299/mo), Growth ($599/mo), or Premium ($999/mo). All include our core expertise and support."
+    "Our pricing includes a Basic plan for a basic website at ₹4,999. Monthly packages start at ₹24,999/month for the Starter plan. The Growth plan is ₹49,999/month, and our Premium plan is ₹82,999/month. We also offer custom quotes for specific projects.",
+    "We believe in transparent pricing. Basic: ₹4,999, Starter: ₹24,999/mo, Growth: ₹49,999/mo, Premium: ₹82,999/mo. Need something else? Let's discuss a custom solution.",
+    "Investment options: Basic (₹4,999), Starter (₹24,999/mo), Growth (₹49,999/mo), or Premium (₹82,999/mo). All include our core expertise and support."
   ],
   technology: [
     "We use the latest tech stack: React, Next.js, TypeScript for web; React Native for mobile; and modern cloud infrastructure. For ERPs, we use robust, scalable database solutions.",
