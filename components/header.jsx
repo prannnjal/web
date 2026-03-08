@@ -30,7 +30,7 @@ export default function Header() {
             <Link href="/">
               {/* Desktop Logo */}
               <div className="hidden lg:block cursor-pointer">
-                <Logo size="favicon" />
+                <Logo size="default" />
               </div>
               {/* Mobile Logo */}
               <div className="lg:hidden cursor-pointer">

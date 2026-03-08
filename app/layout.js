@@ -22,7 +22,7 @@ export const metadata = {
     siteName: "Xylotek",
     images: [
       {
-        url: "/ChatGPT_Image_Feb_18__2026__12_52_36_AM-removebg-preview.png",
+        url: "/assets/images/logo.jpeg",
         width: 1200,
         height: 630,
         alt: "Xylotek Logo",
@@ -35,7 +35,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Xylotek - Next-Gen UX Design & Development",
     description: "Crafting next-generation user experiences through innovative design and cutting-edge technology.",
-    images: ["/ChatGPT_Image_Feb_18__2026__12_52_36_AM-removebg-preview.png"],
+    images: ["/assets/images/logo.jpeg"],
   },
   icons: {
     icon: [
