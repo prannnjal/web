@@ -18,7 +18,7 @@ export const metadata = {
   openGraph: {
     title: "Xylotek - Next-Gen UX Design & Development",
     description: "Crafting next-generation user experiences through innovative design and cutting-edge technology.",
-    url: "https://xylotek.com",
+    url: "https://xylotek.in",
     siteName: "Xylotek",
     images: [
       {

@@ -6,6 +6,6 @@ export default function robots() {
             userAgent: '*',
             allow: '/',
         },
-        sitemap: 'https://xylotek.com/sitemap.xml',
+        sitemap: 'https://xylotek.in/sitemap.xml',
     }
 }
