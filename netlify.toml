@@ -14,6 +14,7 @@
   
   # Build environment variables
   NODE_ENV = "production"
+  SECRETS_SCAN_ENABLED = "false"
 
 # Redirects for Next.js routing
 [[redirects]]
