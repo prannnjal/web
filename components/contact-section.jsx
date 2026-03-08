@@ -19,7 +19,7 @@ const contactInfo = [
     title: "Email",
     details: "solutionsxylotek@gmail.com",
     href: "mailto:solutionsxylotek@gmail.com",
-    description: "I'll respond within 24 hours"
+    description: "We'll respond within 24 hours"
   },
 
   {
@@ -51,7 +51,7 @@ export default function ContactSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     try {
       const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
       if (scriptUrl) {
@@ -93,7 +93,7 @@ export default function ContactSection() {
 
   const handleQuickSubmit = async (e) => {
     e.preventDefault()
-    
+
     try {
       const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
       if (scriptUrl) {
@@ -126,95 +126,92 @@ export default function ContactSection() {
             Let's <span className="gradient-text">Connect</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-generalsans">
-            Ready to bring your vision to life? I'm here to help you create something extraordinary.
+            Let’s turn your business vision into a strong digital presence built for long-term growth.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
+        <div className="flex flex-col sm:gap-4 w-full mb-0">
           {/* Contact Information */}
-          <div className="space-y-8 fade-in-up">
+          <div className="space-y-6 fade-in-up">
             <div>
               <h3 className="text-2xl font-semibold text-white mb-6 font-generalsans">
                 Get in Touch
               </h3>
-              <p className="text-white/60 mb-8 leading-relaxed">
-                Whether you have a project in mind or just want to chat about possibilities,
-                I'd love to hear from you. Let's discuss how we can work together.
-              </p>
             </div>
 
-            {/* Quick Quote Form */}
-            <div className="glass-card p-6 sm:p-8">
-              <h4 className="text-xl font-semibold text-white mb-4 font-generalsans">Quick Quote</h4>
-              {isQuickSubmitted ? (
-                <div className="text-center py-4">
-                  <CheckCircle className="h-10 w-10 text-red-500 mx-auto mb-2" />
-                  <p className="text-white/80">Thanks! I'll reach out shortly.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleQuickSubmit} className="space-y-4">
-                  <div>
-                    <label htmlFor="quick-name" className="block text-white mb-2 font-generalsans">Name</label>
-                    <Input
-                      id="quick-name"
-                      name="name"
-                      type="text"
-                      value={quickFormData.name}
-                      onChange={handleQuickChange}
-                      required
-                      className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
-                      placeholder="Your name"
-                    />
+            <div className="flex w-full gap-3 flex-row justify-between">
+              {/* Quick Quote Form */}
+              <div className="w-1/2 glass-card p-2 sm:p-8">
+                {/* <h4 className="text-xl font-semibold text-white mb-4 font-generalsans">Quick Quote</h4> */}
+                {isQuickSubmitted ? (
+                  <div className="text-center py-4">
+                    <CheckCircle className="h-10 w-10 text-red-500 mx-auto mb-2" />
+                    <p className="text-white/80">Thanks! We'll reach out shortly.</p>
                   </div>
-                  <div>
-                    <label htmlFor="businessName" className="block text-white mb-2 font-generalsans">Business Name</label>
-                    <Input
-                      id="businessName"
-                      name="businessName"
-                      type="text"
-                      value={quickFormData.businessName}
-                      onChange={handleQuickChange}
-                      required
-                      className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
-                      placeholder="Your company"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-white mb-2 font-generalsans">Phone Number</label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      pattern="[0-9]{10}"
-                      value={quickFormData.phone}
-                      onChange={handleQuickChange}
-                      required
-                      className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
-                      placeholder="10-digit phone number"
-                      title="Please enter exactly 10 digits"
-                      maxLength={10}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="services" className="block text-white mb-2 font-generalsans">What services do you want?</label>
-                    <select
-                      id="services"
-                      name="services"
-                      value={quickFormData.services}
-                      onChange={handleQuickChange}
-                      required
-                      className="w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 focus:border-red-500 rounded-md px-3 py-2"
-                    >
-                      <option value="" className="text-black">Select a service</option>
-                      <option value="Web Development" className="text-black">Web Development</option>
-                      <option value="UI/UX Design" className="text-black">UI/UX Design</option>
-                      <option value="Mobile Development" className="text-black">Mobile Development</option>
-                      <option value="Digital Marketing" className="text-black">Digital Marketing</option>
-                      <option value="Business Intelligence" className="text-black">Business Intelligence</option>
-                      <option value="Performance Optimization" className="text-black">Performance Optimization</option>
-                    </select>
-                  </div>
-                  <div>
+                ) : (
+                  <form onSubmit={handleQuickSubmit} className="space-y-4">
+                    <div>
+                      <label htmlFor="quick-name" className="block text-white mb-2 font-generalsans">Name</label>
+                      <Input
+                        id="quick-name"
+                        name="name"
+                        type="text"
+                        value={quickFormData.name}
+                        onChange={handleQuickChange}
+                        required
+                        className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="businessName" className="block text-white mb-2 font-generalsans">Business Name</label>
+                      <Input
+                        id="businessName"
+                        name="businessName"
+                        type="text"
+                        value={quickFormData.businessName}
+                        onChange={handleQuickChange}
+                        required
+                        className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
+                        placeholder="Your company"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className="block text-white mb-2 font-generalsans">Phone Number</label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        pattern="[0-9]{10}"
+                        value={quickFormData.phone}
+                        onChange={handleQuickChange}
+                        required
+                        className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
+                        placeholder="10-digit phone number"
+                        title="Please enter exactly 10 digits"
+                        maxLength={10}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="services" className="block text-white mb-2 font-generalsans">What services do you want?</label>
+                      <select
+                        id="services"
+                        name="services"
+                        value={quickFormData.services}
+                        onChange={handleQuickChange}
+                        required
+                        className="w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 focus:border-red-500 rounded-md px-3 py-2"
+                      >
+                        <option value="" className="text-black">Select a service</option>
+                        <option value="Web Development" className="text-black">Web Development</option>
+                        <option value="Google Business Profile" className="text-black">Google Business Profile & SEO</option>
+                        <option value="Mobile Development" className="text-black">Mobile Development</option>
+                        <option value="Digital Marketing" className="text-black">Digital Marketing</option>
+                        <option value="Business Intelligence" className="text-black">Business Intelligence</option>
+                        <option value="Performance Optimization" className="text-black">Performance Optimization</option>
+                      </select>
+                    </div>
+                    {/* <div>
                     <label htmlFor="budget" className="block text-white mb-2 font-generalsans">Budget</label>
                     <select
                       id="budget"
@@ -230,53 +227,58 @@ export default function ContactSection() {
                       <option value="₹50,000 - ₹1,00,000" className="text-black">₹50,000 - ₹1,00,000</option>
                       <option value="> ₹1,00,000" className="text-black">&gt; ₹1,00,000</option>
                     </select>
-                  </div>
-                  <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white font-generalsans">
-                    Get Quote
-                    <Send className="ml-2 h-4 w-4" />
-                  </Button>
-                </form>
-              )}
-            </div>
+                  </div> */}
+                    <Button
+                      type="submit"
+                      className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-generalsans"
+                    >
+                      Send
+                      <Send className="h-4 w-4" />
+                    </Button>
 
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <div
-                  key={index}
-                  className="glass-card p-6 hover:bg-white/5 transition-all duration-300"
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="text-red-500 mt-1">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-white mb-1 font-generalsans">
-                        {info.title}
-                      </h4>
-                      {info.href ? (
-                        <a href={info.href} className="text-white mb-1 font-generalsans hover:text-red-500 transition-colors block">
-                          {info.details}
-                        </a>
-                      ) : (
-                        <p className="text-white mb-1 font-generalsans">
-                          {info.details}
+                  </form>
+                )}
+              </div>
+
+              <div className="w-1/2 space-y-6">
+                {contactInfo.map((info, index) => (
+                  <div
+                    key={index}
+                    className="glass-card p-6 hover:bg-white/5 transition-all duration-300"
+                  >
+                    <div className="flex items-start space-x-4">
+                      <div className="text-red-500 mt-1">
+                        {info.icon}
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-white mb-1 font-generalsans">
+                          {info.title}
+                        </h4>
+                        {info.href ? (
+                          <a href={info.href} className="text-white mb-1 font-generalsans hover:text-red-500 transition-colors block">
+                            {info.details}
+                          </a>
+                        ) : (
+                          <p className="text-white mb-1 font-generalsans">
+                            {info.details}
+                          </p>
+                        )}
+                        <p className="text-white/60 text-sm">
+                          {info.description}
                         </p>
-                      )}
-                      <p className="text-white/60 text-sm">
-                        {info.description}
-                      </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="fade-in-up">
+          {/* <div className="fade-in-up">
             <div className="glass-card p-6 sm:p-8">
               <h3 className="text-2xl font-semibold text-white mb-6 font-generalsans">
-                Send a Message
+                Send a Messageee
               </h3>
 
               {isSubmitted ? (
@@ -367,11 +369,11 @@ export default function ContactSection() {
                 </form>
               )}
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Additional CTA */}
-        <div className="text-center mt-16 fade-in-up">
+        {/* <div className="text-center mt-8 fade-in-up">
           <div className="glass-card p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-semibold text-white mb-4 font-generalsans">
               Ready to Start Your Project?
@@ -395,7 +397,7 @@ export default function ContactSection() {
               </Button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   )

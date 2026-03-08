@@ -4,11 +4,11 @@ import Image from "next/image"
 
 export default function Logo({ className = "", size = "default" }) {
   const sizeClasses = {
-    small: "h-8 w-8",
-    default: "h-10 w-10",
-    large: "h-12 w-12",
-    xlarge: "h-16 w-16",
-    favicon: "h-20 w-20"
+    small: "h-12 w-12",
+    default: "h-16 w-16",
+    large: "h-20 w-20",
+    xlarge: "h-24 w-24",
+    favicon: "h-32 w-32"
   }
 
   return (
@@ -16,11 +16,11 @@ export default function Logo({ className = "", size = "default" }) {
       {/* Logo Icon */}
       <div className={`relative ${sizeClasses[size]} flex-shrink-0`}>
         <Image
-          src="/ChatGPT_Image_Feb_18__2026__12_52_36_AM-removebg-preview.png"
+          src="/assets/images/logo.jpeg"
           alt="Xylotek Logo"
-          width={80}
-          height={80}
-          className="w-full h-full object-contain drop-shadow-lg"
+          width={100}
+          height={100}
+          className="w-full rounded-full h-full object-contain drop-shadow-lg"
           priority
           quality={95}
         />
@@ -31,11 +31,11 @@ export default function Logo({ className = "", size = "default" }) {
 
       {/* Text Logo */}
       <div className="flex flex-col flex-shrink-0">
-        <span className="text-xl font-bold text-white font-generalsans leading-none">
-          Xylotek
+        <span className="text-xl font-bold text-[#D4AF37] font-light font-generalsans leading-none">
+          XYLOTEK SOLUTIONS
         </span>
         <span className="text-xs text-gray-400 font-medium tracking-wider">
-          NEXT-GEN UX
+          Product/Services
         </span>
       </div>
     </div>
@@ -55,7 +55,7 @@ export function LogoIcon({ className = "", size = "default" }) {
   return (
     <div className={`relative ${sizeClasses[size]} flex-shrink-0 ${className}`}>
       <Image
-        src="/Screenshot_2025-08-13_023958-removebg-preview.png"
+        src="/assets/images/logo.jpeg"
         alt="LeadBoostX Logo"
         width={80}
         height={80}
@@ -76,7 +76,7 @@ export function CompactLogo({ className = "" }) {
     <div className={`flex items-center space-x-2 ${className}`}>
       <div className="relative h-8 w-8 flex-shrink-0">
         <Image
-          src="/ChatGPT_Image_Feb_18__2026__12_52_36_AM-removebg-preview.png"
+          src="/assets/images/logo.jpeg"
           alt="Xylotek"
           width={32}
           height={32}
@@ -98,7 +98,7 @@ export function FaviconLogo({ className = "" }) {
   return (
     <div className={`relative h-24 w-24 flex-shrink-0 ${className}`}>
       <Image
-        src="/Screenshot_2025-08-13_023958-removebg-preview.png"
+        src="/assets/images/logo.jpeg"
         alt="Xylotek Favicon"
         width={96}
         height={96}

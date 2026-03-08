@@ -3,61 +3,9 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ArrowRight, Send, X, Zap, Globe, Users, BarChart3 } from "lucide-react"
-import { Suspense, useState, useEffect } from "react"
-import dynamic from "next/dynamic"
-
-// Dynamically import the 3D model with no SSR
-const ThreeDModel = dynamic(() => import("./3d-model"), {
-  ssr: false,
-  loading: () => <ThreeDModelFallback />
-})
-
-// Fallback component for when 3D model fails to load
-function ThreeDModelFallback() {
-  return (
-    <div className="relative h-[50vh] sm:h-[60vh] w-full bg-black flex items-center justify-center">
-      <div className="text-center text-white">
-        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-red-500 mx-auto mb-4"></div>
-        <h3 className="text-xl font-bold mb-2">Loading 3D Computer</h3>
-        <p className="text-gray-400">Preparing interactive 3D model...</p>
-      </div>
-    </div>
-  )
-}
-
-// Error fallback component
-function ThreeDModelError() {
-  return (
-    <div className="relative h-[50vh] sm:h-[60vh] w-full bg-black flex items-center justify-center">
-      <div className="text-center text-white">
-        <div className="text-6xl mb-4">🖥️</div>
-        <h3 className="text-xl font-bold mb-2">3D Computer Setup</h3>
-        <p className="text-gray-400 mb-4">Interactive 3D model of a complete computer workstation</p>
-        <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <div className="text-2xl mb-2">🖥️</div>
-            <p className="text-sm">Monitor & Tower</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <div className="text-2xl mb-2">⌨️</div>
-            <p className="text-sm">Keyboard & Mouse</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <div className="text-2xl mb-2">🪑</div>
-            <p className="text-sm">Office Chair</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <div className="text-2xl mb-2">🪵</div>
-            <p className="text-sm">Wooden Desk</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+import { useState, useEffect } from "react"
 
 export default function HeroSection() {
-  const [modelError, setModelError] = useState(false)
   const [quickFormData, setQuickFormData] = useState({
     name: "",
     businessName: "",
@@ -86,7 +34,7 @@ export default function HeroSection() {
   const handleQuickSubmit = async (e) => {
     e.preventDefault()
     console.log("Hero quick quote submitted:", quickFormData)
-    
+
     try {
       const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
       if (scriptUrl) {
@@ -112,34 +60,43 @@ export default function HeroSection() {
 
   return (
     <section className="min-h-screen w-full flex flex-col relative bg-black" id="home">
-      {/* Text Content - Top Section */}
-      <div className="w-full mx-auto flex flex-col mt-28 sm:mt-32 md:mt-36 lg:mt-20 text-center gap-3 z-10 px-4">
-        <p className="sm:text-3xl text-xl font-medium text-white font-generalsans">
-          Welcome to Xylotek
+      {/* Text & CTA Content - Centered */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center gap-6 z-10 px-4 fade-in-up">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white font-generalsans">
+          Welcome to <br className="sm:hidden" />
+          <span className="text-[#D4AF37] font-light">Xylotek Solutions</span>
+        </h1>
+        <p className="hero_tag text-white/90 font-thin text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-2xl mt-2">
+          We craft digital solutions that help businesses grow
         </p>
-        <p className="hero_tag text-white font-thin text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-          We craft next-gen UX.
-        </p>
+        <Button
+          size="lg"
+          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          className="bg-red-600 flex items-center justify-center hover:bg-red-700 text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 pulse-glow mt-4 md:mt-8 rounded-xl font-generalsans"
+        >
+          Let's work together
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </Button>
       </div>
 
-      {/* Quick Quote Form - Pinned to left */}
-      {showQuickForm && (
-        <div className="lg:absolute lg:left-0 lg:top-28 z-10 w-full lg:w-auto px-4 sm:px-6 lg:px-0">
-          <div className="w-full max-w-none lg:max-w-md">
-            <div className="glass-card p-6 sm:p-8 relative max-h-[70vh] overflow-y-auto">
+      {/* Quick Quote Form - Pinned to bottom right */}
+      <div className="fixed bottom-24 right-4 sm:bottom-28 sm:right-6 z-40 flex flex-col items-end">
+        {showQuickForm ? (
+          <div className="w-[calc(100vw-2rem)] sm:w-[380px] mb-2 fade-in-up">
+            <div className="glass-card bg-black/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl p-6 sm:p-8 relative max-h-[70vh] overflow-y-auto">
               <button
                 type="button"
                 onClick={() => setShowQuickForm(false)}
-                aria-label="Close quick quote form"
-                className="absolute top-2 right-2 text-white/70 hover:text-white transition-colors p-1 rounded-md hover:bg-white/10"
+                aria-label="Minimize quick quote form"
+                className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors p-1 rounded-md hover:bg-white/10"
               >
-                <X className="h-4 w-4" />
+                <X className="h-5 w-5" />
               </button>
               <h4 className="text-xl font-semibold text-white mb-4 font-generalsans">Quick Quote</h4>
               {isQuickSubmitted ? (
                 <div className="text-center py-4">
                   <div className="h-10 w-10 rounded-full bg-red-600/20 border border-red-600/30 mx-auto mb-2 flex items-center justify-center">✅</div>
-                  <p className="text-white/80">Thanks! I'll reach out shortly.</p>
+                  <p className="text-white/80">Thanks! We'll reach out shortly.</p>
                 </div>
               ) : (
                 <form onSubmit={handleQuickSubmit} className="space-y-4">
@@ -197,7 +154,7 @@ export default function HeroSection() {
                     >
                       <option value="" className="text-black">Select a service</option>
                       <option value="Web Development" className="text-black">Web Development</option>
-                      <option value="UI/UX Design" className="text-black">UI/UX Design</option>
+                      <option value="Google Business Profile" className="text-black">Google Business Profile & SEO</option>
                       <option value="Mobile Development" className="text-black">Mobile Development</option>
                       <option value="Digital Marketing" className="text-black">Digital Marketing</option>
                       <option value="Business Intelligence" className="text-black">Business Intelligence</option>
@@ -229,32 +186,22 @@ export default function HeroSection() {
               )}
             </div>
           </div>
-        </div>
-      )}
-      {/* 3D Model Section - Bottom Section */}
-      <div className="w-full h-full absolute inset-0">
-        {modelError ? (
-          <ThreeDModelError />
         ) : (
-          <Suspense fallback={<ThreeDModelFallback />}>
-            <ThreeDModel
-              className="w-full h-full"
-              onError={() => setModelError(true)}
-            />
-          </Suspense>
+          <button
+            onClick={() => setShowQuickForm(true)}
+            className="bg-red-600 hover:bg-red-700 text-white p-3 w-12 h-12 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center relative group pulse-glow mb-2"
+            aria-label="Open Quick Quote"
+            title="Get a Quick Quote"
+          >
+            <div className="absolute inset-0 bg-red-600 rounded-full blur-md opacity-50 group-hover:opacity-75 transition-opacity"></div>
+            <div className="relative z-10 flex items-center justify-center">
+              <Send className="h-6 w-6 ml-[-2px]" />
+            </div>
+          </button>
         )}
       </div>
 
-      {/* Call to Action Button - Bottom */}
-      <div className="absolute bottom-5 left-0 right-0 w-full z-10 text-center pb-[env(safe-area-inset-bottom)]">
-        <Button
-          size="lg"
-          className="bg-red-600 hover:bg-red-700 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 pulse-glow"
-        >
-          Let's work together
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
-      </div>
+
     </section>
   )
 }
