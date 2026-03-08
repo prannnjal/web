@@ -61,6 +61,7 @@ export default function HeroSection() {
   const [quickFormData, setQuickFormData] = useState({
     name: "",
     businessName: "",
+    phone: "",
     services: "",
     budget: ""
   })
@@ -82,11 +83,30 @@ export default function HeroSection() {
     })
   }
 
-  const handleQuickSubmit = (e) => {
+  const handleQuickSubmit = async (e) => {
     e.preventDefault()
     console.log("Hero quick quote submitted:", quickFormData)
+    
+    try {
+      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
+      if (scriptUrl) {
+        await fetch(scriptUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({ ...quickFormData, formType: "Hero Quick Quote" })
+        })
+      } else {
+        console.warn("Google Script URL is not set. Mock submission successful.")
+      }
+    } catch (error) {
+      console.error("Quick quote submission error:", error)
+    }
+
     setIsQuickSubmitted(true)
-    setQuickFormData({ name: "", businessName: "", services: "", budget: "" })
+    setQuickFormData({ name: "", businessName: "", phone: "", services: "", budget: "" })
     setTimeout(() => setIsQuickSubmitted(false), 3000)
   }
 
@@ -150,6 +170,22 @@ export default function HeroSection() {
                     />
                   </div>
                   <div>
+                    <label htmlFor="hero-phone" className="block text-white mb-2 font-generalsans">Phone Number</label>
+                    <Input
+                      id="hero-phone"
+                      name="phone"
+                      type="tel"
+                      pattern="[0-9]{10}"
+                      value={quickFormData.phone}
+                      onChange={handleQuickChange}
+                      required
+                      className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
+                      placeholder="10-digit phone number"
+                      title="Please enter exactly 10 digits"
+                      maxLength={10}
+                    />
+                  </div>
+                  <div>
                     <label htmlFor="hero-services" className="block text-white mb-2 font-generalsans">What services do you want?</label>
                     <select
                       id="hero-services"
@@ -179,10 +215,10 @@ export default function HeroSection() {
                       className="w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 focus:border-red-500 rounded-md px-3 py-2"
                     >
                       <option value="" className="text-black">Select a range</option>
-                      <option value="< $1,000" className="text-black">&lt; $1,000</option>
-                      <option value="$1,000 - $5,000" className="text-black">$1,000 - $5,000</option>
-                      <option value="$5,000 - $10,000" className="text-black">$5,000 - $10,000</option>
-                      <option value="> $10,000" className="text-black">&gt; $10,000</option>
+                      <option value="₹4,999 - ₹10,000" className="text-black">₹4,999 - ₹10,000</option>
+                      <option value="₹10,000 - ₹50,000" className="text-black">₹10,000 - ₹50,000</option>
+                      <option value="₹50,000 - ₹1,00,000" className="text-black">₹50,000 - ₹1,00,000</option>
+                      <option value="> ₹1,00,000" className="text-black">&gt; ₹1,00,000</option>
                     </select>
                   </div>
                   <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white font-generalsans">

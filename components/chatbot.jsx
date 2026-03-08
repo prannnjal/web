@@ -28,9 +28,9 @@ const botResponses = {
     "Clients love working with us! We have a 5-star rating from industry leaders like TechStart and InnovateLab, who praise our attention to detail and technical expertise."
   ],
   contact: [
-    "You can reach us at **+1 (555) 123-4567** (Mon-Fri, 9AM-6PM) or email **hello@xylotek.com**. We aim to respond within 24 hours!",
-    "Feel free to use the contact form on this page, or email us directly at **hello@xylotek.com**. We're fully remote and work with clients worldwide.",
-    "Get in touch! Call us at +1 (555) 123-4567 or drop an email to hello@xylotek.com. You can also schedule a consultation directly through our website."
+    "You can reach us at **+91 8051216699** (Mon-Fri, 9AM-6PM) or email **solutionsxylotek@gmail.com**. We aim to respond within 24 hours!",
+    "Feel free to use the contact form on this page, or email us directly at **solutionsxylotek@gmail.com**. We're fully remote and work with clients worldwide.",
+    "Get in touch! Call us at +91 8051216699 or drop an email to solutionsxylotek@gmail.com. You can also schedule a consultation directly through our website."
   ],
   erp: [
     "Our Custom ERP Software solutions are tailored to streamline your business. We cover Inventory Management, HR & Payroll, CRM Integration, and Automated Workflows.",
@@ -742,15 +742,14 @@ export default function Chatbot() {
             </div>
           </a>
         )}
+        {/*
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-blue-500/25 group"
           aria-label="Open chat"
         >
-          {/* Animated background glow */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 rounded-full blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
 
-          {/* Icon with glow effect */}
           <div className="relative z-10">
             {isOpen ? (
               <X className="h-6 w-6" />
@@ -759,11 +758,11 @@ export default function Chatbot() {
             )}
           </div>
 
-          {/* Floating particles effect */}
           {!isOpen && (
             <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
           )}
         </button>
+        */}
       </div>
 
       {/* Next-Gen Chat Window */}

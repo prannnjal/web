@@ -24,7 +24,7 @@ const socialLinks = [
   {
     name: "Email",
     icon: <Mail className="h-5 w-5" />,
-    href: "mailto:hello@xylotek.com",
+    href: "mailto:solutionsxylotek@gmail.com",
     color: "hover:text-red-400"
   }
 ]
@@ -94,8 +94,16 @@ export default function Footer() {
               Contact
             </h4>
             <div className="space-y-2 text-white/60 font-generalsans">
-              <p>hello@xylotek.com</p>
-              <p>+1 (555) 123-4567</p>
+              <p>
+                <a href="mailto:solutionsxylotek@gmail.com" className="hover:text-red-400 transition-colors">
+                  solutionsxylotek@gmail.com
+                </a>
+              </p>
+              <p>
+                <a href="tel:+918051216699" className="hover:text-red-400 transition-colors">
+                  +91 8051216699
+                </a>
+              </p>
               <p>Remote Worldwide</p>
             </div>
           </div>
@@ -105,7 +113,7 @@ export default function Footer() {
         <div className="border-t border-white/10 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-white/60 text-sm font-generalsans">
-              © 2025 Xylotek. All rights reserved.
+              © 2026 Xylotek. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="#" className="text-white/60 hover:text-white text-sm transition-colors font-generalsans">

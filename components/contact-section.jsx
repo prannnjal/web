@@ -10,13 +10,15 @@ const contactInfo = [
   {
     icon: <Phone className="h-6 w-6" />,
     title: "Phone",
-    details: "+1 (555) 123-4567",
+    details: "+91 8051216699",
+    href: "tel:+918051216699",
     description: "Available Mon-Fri, 9AM-6PM"
   },
   {
     icon: <Mail className="h-6 w-6" />,
     title: "Email",
-    details: "hello@xylotek.com",
+    details: "solutionsxylotek@gmail.com",
+    href: "mailto:solutionsxylotek@gmail.com",
     description: "I'll respond within 24 hours"
   },
 
@@ -41,15 +43,33 @@ export default function ContactSection() {
   const [quickFormData, setQuickFormData] = useState({
     name: "",
     businessName: "",
+    phone: "",
     services: "",
     budget: ""
   })
   const [isQuickSubmitted, setIsQuickSubmitted] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData)
+    
+    try {
+      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
+      if (scriptUrl) {
+        await fetch(scriptUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({ ...formData, formType: "Contact Form" })
+        })
+      } else {
+        console.warn("Google Script URL is not set. Mock submission successful.")
+      }
+    } catch (error) {
+      console.error("Form submission error:", error)
+    }
+
     setIsSubmitted(true)
     setFormData({ name: "", email: "", subject: "", message: "" })
 
@@ -71,11 +91,29 @@ export default function ContactSection() {
     })
   }
 
-  const handleQuickSubmit = (e) => {
+  const handleQuickSubmit = async (e) => {
     e.preventDefault()
-    console.log("Quick quote submitted:", quickFormData)
+    
+    try {
+      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
+      if (scriptUrl) {
+        await fetch(scriptUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({ ...quickFormData, formType: "Quick Quote" })
+        })
+      } else {
+        console.warn("Google Script URL is not set. Mock submission successful.")
+      }
+    } catch (error) {
+      console.error("Quick quote submission error:", error)
+    }
+
     setIsQuickSubmitted(true)
-    setQuickFormData({ name: "", businessName: "", services: "", budget: "" })
+    setQuickFormData({ name: "", businessName: "", phone: "", services: "", budget: "" })
     setTimeout(() => setIsQuickSubmitted(false), 3000)
   }
 
@@ -142,6 +180,22 @@ export default function ContactSection() {
                     />
                   </div>
                   <div>
+                    <label htmlFor="phone" className="block text-white mb-2 font-generalsans">Phone Number</label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      pattern="[0-9]{10}"
+                      value={quickFormData.phone}
+                      onChange={handleQuickChange}
+                      required
+                      className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-red-500"
+                      placeholder="10-digit phone number"
+                      title="Please enter exactly 10 digits"
+                      maxLength={10}
+                    />
+                  </div>
+                  <div>
                     <label htmlFor="services" className="block text-white mb-2 font-generalsans">What services do you want?</label>
                     <select
                       id="services"
@@ -171,10 +225,10 @@ export default function ContactSection() {
                       className="w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 focus:border-red-500 rounded-md px-3 py-2"
                     >
                       <option value="" className="text-black">Select a range</option>
-                      <option value="< $1,000" className="text-black">&lt; $1,000</option>
-                      <option value="$1,000 - $5,000" className="text-black">$1,000 - $5,000</option>
-                      <option value="$5,000 - $10,000" className="text-black">$5,000 - $10,000</option>
-                      <option value="> $10,000" className="text-black">&gt; $10,000</option>
+                      <option value="₹4,999 - ₹10,000" className="text-black">₹4,999 - ₹10,000</option>
+                      <option value="₹10,000 - ₹50,000" className="text-black">₹10,000 - ₹50,000</option>
+                      <option value="₹50,000 - ₹1,00,000" className="text-black">₹50,000 - ₹1,00,000</option>
+                      <option value="> ₹1,00,000" className="text-black">&gt; ₹1,00,000</option>
                     </select>
                   </div>
                   <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white font-generalsans">
@@ -199,9 +253,15 @@ export default function ContactSection() {
                       <h4 className="font-semibold text-white mb-1 font-generalsans">
                         {info.title}
                       </h4>
-                      <p className="text-white mb-1 font-generalsans">
-                        {info.details}
-                      </p>
+                      {info.href ? (
+                        <a href={info.href} className="text-white mb-1 font-generalsans hover:text-red-500 transition-colors block">
+                          {info.details}
+                        </a>
+                      ) : (
+                        <p className="text-white mb-1 font-generalsans">
+                          {info.details}
+                        </p>
+                      )}
                       <p className="text-white/60 text-sm">
                         {info.description}
                       </p>
