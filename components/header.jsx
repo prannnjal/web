@@ -56,6 +56,9 @@ export default function Header() {
             <Link href="/contact" className="text-white/80 hover:text-white transition-colors font-generalsans">
               Contact
             </Link>
+            <Link href="/blog" className="text-white/80 hover:text-white transition-colors font-generalsans text-red-500 font-bold items-center flex gap-1 animate-pulse">
+              Blog <span className="text-[10px] bg-red-600 text-white px-1.5 py-0.5 rounded-full uppercase tracking-wider">New</span>
+            </Link>
             <Link href="/contact">
               <Button
                 size="sm"
@@ -113,6 +116,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
+              </Link>
+              <Link
+                href="/blog"
+                className="text-white/80 hover:text-white transition-colors font-generalsans flex items-center gap-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blog <span className="text-[10px] bg-red-600 text-white px-1.5 py-0.5 rounded-full uppercase tracking-wider">New</span>
               </Link>
               <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
                 <Button
