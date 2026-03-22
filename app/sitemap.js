@@ -32,5 +32,23 @@ export default function sitemap() {
             changeFrequency: 'yearly',
             priority: 0.5,
         },
+        {
+            url: 'https://xylotek.in/blog',
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
+        {
+            url: 'https://xylotek.in/blog/stop-paying-for-seo',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
+        {
+            url: 'https://xylotek.in/blog/the-death-of-the-standard-website',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
     ]
 }
