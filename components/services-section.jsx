@@ -50,74 +50,77 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="section-padding bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="section-padding bg-black relative overflow-hidden">
+      {/* Background Accents */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16 fade-in-up px-4">
-          <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-white mb-4">
-            What We <span className="gradient-text">Create</span>
+        <div className="text-center mb-24 fade-in-up">
+          <div className="inline-block px-4 py-1.5 rounded-full border border-red-500/30 bg-red-500/5 text-red-500 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+            Our Architecture
+          </div>
+          <h2 className="text-4xl md:text-6xl font-generalsans font-bold text-white mb-6 tracking-tight">
+            Precision <span className="gradient-text">Engineering</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-generalsans">
-            Comprehensive digital solutions that transform ideas into powerful, user-centric experiences.
+          <p className="text-white/40 text-lg md:text-xl max-w-3xl mx-auto font-generalsans leading-relaxed">
+            Building performance-first digital infrastructure that transforms operations into unfair competitive advantages.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
-              className="glass-card p-6 sm:p-8 hover:bg-white/5 transition-all duration-300 group fade-in-up"
+              className="glass-card p-10 group overflow-hidden border-white/5 bg-white/[0.01] backdrop-blur-2xl transition-all duration-500 hover:border-red-500/40 hover:translate-y-[-8px] rounded-[2.5rem]"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="text-red-500 mb-6 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
+              <div className="relative mb-8">
+                <div className="w-16 h-16 rounded-2xl bg-red-600/10 flex items-center justify-center text-red-500 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-500 shadow-[0_0_20px_rgba(239,68,68,0.1)]">
+                  {service.icon}
+                </div>
               </div>
 
-              <h3 className="text-2xl font-semibold text-white mb-4 font-generalsans">
+              <h3 className="text-2xl font-bold text-white mb-4 font-generalsans group-hover:text-red-500 transition-colors">
                 {service.title}
               </h3>
 
-              <p className="text-white/60 mb-6 leading-relaxed">
+              <p className="text-white/40 mb-8 leading-relaxed font-generalsans text-sm font-medium">
                 {service.description}
               </p>
 
-              <ul className="space-y-2 mb-6">
+              <div className="space-y-3 mb-10">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-white/70">
-                    <div className="w-1.5 h-1.5 bg-red-500 rounded-full mr-3"></div>
+                  <div key={featureIndex} className="flex items-center text-white/60 text-xs font-generalsans">
+                    <div className="w-1 h-1 bg-red-600 rounded-full mr-3 shadow-[0_0_5px_rgba(239,68,68,0.8)]" />
                     {feature}
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
 
               <Button
                 variant="ghost"
-                className="text-red-500 hover:text-red-400 hover:bg-red-500/10 p-0 h-auto font-generalsans"
+                className="text-white/40 hover:text-white group/btn p-0 h-auto font-generalsans text-xs font-bold uppercase tracking-widest transition-all"
               >
-                Learn More
-                <ArrowRight className="ml-2 h-4 w-4" />
+                Explore System
+                <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
               </Button>
             </div>
           ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center mt-16 fade-in-up">
-          <div className="glass-card p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-semibold text-white mb-4 font-generalsans">
-              Ready to Start Your Project?
-            </h3>
-            <p className="text-white/60 mb-6">
-              Let's discuss how we can help bring your vision to life with cutting-edge technology and design.
-            </p>
-            <Button
-              size="lg"
-              className="bg-red-600 hover:bg-red-700 text-white font-generalsans"
-            >
-              Start a Conversation
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+        {/* CTA Section - Integrated */}
+        <div className="mt-24 text-center">
+          <div className="inline-flex glass-card p-2 rounded-2xl bg-white/[0.02] border-white/5">
+            <div className="px-8 py-4">
+              <span className="text-white/40 text-sm font-generalsans mr-6 italic">Ready to optimize your tech stack?</span>
+              <Button
+                className="bg-red-600 hover:bg-red-700 text-white font-black px-8 py-2 rounded-xl transition-all shadow-lg active:scale-95 text-xs uppercase tracking-widest"
+              >
+                Initiate Project
+              </Button>
+            </div>
           </div>
         </div>
       </div>

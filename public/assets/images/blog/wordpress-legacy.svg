@@ -1,0 +1,11 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#0A0A0A"/>
+  <rect width="800" height="450" fill="url(#paint0_radial)" fill-opacity="0.3"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#EF4444" font-family="sans-serif" font-size="24" font-weight="bold" letter-spacing="0.2em">LEGACY SYSTEM: WORDPRESS</text>
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" transform="translate(400 225) rotate(90) scale(225 400)">
+      <stop stop-color="#EF4444"/>
+      <stop offset="1" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

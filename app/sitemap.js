@@ -50,5 +50,41 @@ export default function sitemap() {
             changeFrequency: 'monthly',
             priority: 0.7,
         },
+        {
+            url: 'https://xylotek.in/blog/agency-chatgpt-strategy',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
+        {
+            url: 'https://xylotek.in/blog/google-deindexing-ai-slop',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
+        {
+            url: 'https://xylotek.in/blog/the-cost-of-a-10k-website',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
+        {
+            url: 'https://xylotek.in/blog/wordpress-death-watch-2026',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
+        {
+            url: 'https://xylotek.in/privacy',
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.3,
+        },
+        {
+            url: 'https://xylotek.in/terms',
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.3,
+        },
     ]
 }

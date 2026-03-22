@@ -28,10 +28,10 @@ export default function BlogPost() {
           
           <div className="flex flex-wrap items-center gap-6 text-white/60 font-generalsans border-b border-white/10 pb-8">
             <div className="flex items-center">
-              <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center mr-3 text-white font-bold">
-                X
+              <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center mr-3 text-white font-bold uppercase tracking-widest text-xs">
+                Xy
               </div>
-              <span>Xylotek Team</span>
+              <span>Xylotek</span>
             </div>
             <div className="flex items-center">
               <Calendar className="w-4 h-4 mr-2" />

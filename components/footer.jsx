@@ -117,10 +117,10 @@ export default function Footer() {
               © 2026 Xylotek. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="#" className="text-white/60 hover:text-white text-sm transition-colors font-generalsans">
+              <Link href="/privacy" className="text-white/60 hover:text-white text-sm transition-colors font-generalsans">
                 Privacy Policy
               </Link>
-              <Link href="#" className="text-white/60 hover:text-white text-sm transition-colors font-generalsans">
+              <Link href="/terms" className="text-white/60 hover:text-white text-sm transition-colors font-generalsans">
                 Terms of Service
               </Link>
             </div>
