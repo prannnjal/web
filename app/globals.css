@@ -84,9 +84,6 @@ body {
   font-family: 'General Sans', sans-serif;
 }
 
-/* Font imports */
-@import url('https://fonts.googleapis.com/css2?family=General+Sans:ital,opsz,wght@0,8..144,200..700;1,8..144,200..700&display=swap');
-
 .font-generalsans {
   font-family: 'General Sans', sans-serif;
 }
